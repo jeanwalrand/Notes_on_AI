@@ -1,0 +1,7 @@
+scipy
+jupyter-book
+matplotlib
+numpy
+random
+pandas
+ipywidgets
