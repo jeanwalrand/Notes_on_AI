@@ -6,4 +6,3 @@ pandas
 ipywidgets
 sklearn
 openpyxl
-nbinteract
