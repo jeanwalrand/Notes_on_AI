@@ -7,3 +7,4 @@ ipywidgets
 sklearn
 openpyxl
 ipyleaflet
+widgetsnbextension
