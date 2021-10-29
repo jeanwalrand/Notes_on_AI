@@ -6,3 +6,4 @@ pandas
 ipywidgets
 sklearn
 openpyxl
+ipyleaflet
