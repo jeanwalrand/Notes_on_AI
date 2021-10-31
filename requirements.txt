@@ -8,4 +8,4 @@ sklearn
 openpyxl
 ipyleaflet
 widgetsnbextension
-cv2
+OpenCV
