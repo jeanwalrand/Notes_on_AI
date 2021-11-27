@@ -9,4 +9,4 @@ openpyxl
 ipyleaflet
 widgetsnbextension
 opencv-python-headless
-python-graphviz
+graphviz
