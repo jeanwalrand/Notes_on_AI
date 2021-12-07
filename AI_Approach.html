@@ -1,0 +1,841 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Approach &#8212; Notes on AI</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Image Processing" href="image_processing.html" />
+    <link rel="prev" title="Welcome" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book2_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notes on AI</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   AI Approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="image_processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="estimation.html">
+   Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep_learning.html">
+   Deep Learning &amp; Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control.html">
+   Control and Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_2.html">
+   Appendix 2: Local Code
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/AI_Approach.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/Notes_on_AI.git/main?urlpath=tree/docs/AI_Approach.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-run-the-code">
+   To run the code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ai-vs-classical-programming">
+   AI vs Classical Programming
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-try-these-two-approaches">
+   Let’s try these two approaches
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#first-we-use-the-linear-regression">
+     First we use the linear regression.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#next-we-use-sgd">
+     Next, we use SGD
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-and-test">
+   Train and Test
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-with-a-neural-network">
+   Regression with a Neural Network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#another-example">
+   Another Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="ai-approach">
+<h1>AI Approach<a class="headerlink" href="#ai-approach" title="Permalink to this headline">¶</a></h1>
+<p>This chapter discusses the following topics:</p>
+<ul class="simple">
+<li><p>How to run the code</p></li>
+<li><p>Key difference between AI and Classical Programming</p></li>
+<li><p>Linear Regressions</p></li>
+<li><p>Stochastic Gradient Descent</p></li>
+<li><p>Neural Network Regressions</p></li>
+</ul>
+<div class="section" id="to-run-the-code">
+<h2>To run the code<a class="headerlink" href="#to-run-the-code" title="Permalink to this headline">¶</a></h2>
+<p>If you don’t want to run the code, simply read the cells below.  If you want to run, even edit the code,
+click on the <strong>rocket</strong> symbol on the top of the page and select <strong>Live Code</strong>. It will take
+a little while to launch and then you will see <strong>ready</strong>. The code runs on an external server, so you don’t have to install any software. It is important to <strong>run the code cells</strong> sequentially without skipping, as values computed in one cell are reused in later cells. If something goes wrong, restart from the first cell. Some cells <strong>take a long time</strong> to run.  Please wait until they are done before moving on. The cells with widgets to select parameters are a bit kludgy to go around some bugs in the current version of Jupyter Book.</p>
+</div>
+<div class="section" id="ai-vs-classical-programming">
+<h2>AI vs Classical Programming<a class="headerlink" href="#ai-vs-classical-programming" title="Permalink to this headline">¶</a></h2>
+<p>Here is a little picture that illustrates the difference between <strong>classical programming</strong> and <strong>AI</strong>.</p>
+<p><img alt="title" src="_images/AIvsClassical.pdf" /></p>
+<p>We illustrates this difference on a concrete example.  We have a list, called <strong>data</strong> (as in Data Science), <span class="math notranslate nohighlight">\({\cal D} = \{(X_n, Y_n), n = 1, \ldots, N\}\)</span> of pairs of real numbers. Say that <span class="math notranslate nohighlight">\(X_n\)</span> is the height and <span class="math notranslate nohighlight">\(Y_n\)</span> the weight of person <span class="math notranslate nohighlight">\(n\)</span>.  We want to use this data to learn to predict the weight <span class="math notranslate nohighlight">\(Y\)</span> of an arbitrary person from his/her height <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<ul class="simple">
+<li><p>In <strong>classical programming</strong>, we use rules that tell us how to compute <span class="math notranslate nohighlight">\(Y\)</span>. One such rule is <strong>linear regression</strong>; it computes two coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> from <span class="math notranslate nohighlight">\({\cal D}\)</span> and then specifies that the estimation is <span class="math notranslate nohighlight">\(Y = aX + b\)</span>. In other words, we know how to compute <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> from the input <span class="math notranslate nohighlight">\({\cal D}\)</span>. This is the the top part of the figure above.</p></li>
+<li><p>In <strong>AI</strong>, we build a <strong>system</strong> (a machine learning algorithm) that <em>looks for the rules</em> by trying an estimator and refinining it using <span class="math notranslate nohighlight">\({\cal D}.\)</span> As an example, the system starts with an estimator <span class="math notranslate nohighlight">\(Y = a_0 + b_0 X\)</span>. The system has an <em>improvement process</em> that tells it how to update <span class="math notranslate nohighlight">\((a_0, b_0)\)</span>.  A typical approach is <strong>stochastic gradient descent</strong> (SGD) that modifies <span class="math notranslate nohighlight">\((a_0, b_0)\)</span> in the direction that reduces <span class="math notranslate nohighlight">\((a + bX_1 - Y_1)^2\)</span> and produces <span class="math notranslate nohighlight">\((a_1, b_1)\)</span>.  In the next step, the system modifies <span class="math notranslate nohighlight">\((a_1, b_1)\)</span> in the direction that reduces <span class="math notranslate nohighlight">\((a + bX_2 - Y_2)^2\)</span> and produces <span class="math notranslate nohighlight">\((a_2, b_2)\)</span>, and so on. The idea is that the updates should reduce the average value of <span class="math notranslate nohighlight">\((a + bX - Y)^2\)</span>.
+This is the bottom part of the figure above. This approach is at the core of most AI algorithms.</p></li>
+</ul>
+</div>
+<div class="section" id="let-s-try-these-two-approaches">
+<h2>Let’s try these two approaches<a class="headerlink" href="#let-s-try-these-two-approaches" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="first-we-use-the-linear-regression">
+<h3>First we use the linear regression.<a class="headerlink" href="#first-we-use-the-linear-regression" title="Permalink to this headline">¶</a></h3>
+<p>We use pandas to explore sample data.  (Appendix 1 has a brief discussion of Pandas, which is a tool to manipulate spreadsheets in Python.) We use a table of weights and heights borrowed from</p>
+<p><a class="reference external" href="http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Dinov_020108_HeightsWeights">http://wiki.stat.ucla.edu/socr/index.php/SOCR_Data_Dinov_020108_HeightsWeights</a></p>
+<p>This data is in the excel spreadsheet HW.xlsx.  First, we read the spreadsheet into a DataFrame.
+We then calculate the linear regression of weight over height.
+We then plot.  We label the data <strong>train <span class="math notranslate nohighlight">\(X, Y\)</span></strong> because we use it to train the algorithm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, import some general libraries</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">openpyxl</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">openpyxl.utils.dataframe</span> <span class="kn">import</span> <span class="n">dataframe_to_rows</span>
+<span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">load_workbook</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For this application, we use LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+
+<span class="c1"># We define a function that computes the linear regression </span>
+<span class="c1">#  coefficients A, B of a list Y over a list X</span>
+<span class="k">def</span> <span class="nf">fitLR</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span> 
+    <span class="c1"># create object for the class</span>
+    <span class="n">linear_regressor</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="c1"># convert X into a column - needed by regressor</span>
+    <span class="n">Xcol</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> 
+    <span class="c1"># perform linear regression</span>
+    <span class="n">linear_regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xcol</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span> 
+    <span class="c1"># the linear regression is A + Bx</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">linear_regressor</span><span class="o">.</span><span class="n">coef_</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">linear_regressor</span><span class="o">.</span><span class="n">intercept_</span>  
+    <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span>
+
+<span class="c1"># This function plots the pairs X[n], Y[n] and the line A + Bx</span>
+<span class="k">def</span> <span class="nf">plotFitLR</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">xaxis</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span><span class="s1">&#39;train X,Y&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="o">*</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xaxis</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;LR&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># We load the spreadsheet into a Pandas DataFrame HW_df</span>
+<span class="n">wb</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="s1">&#39;./HW.xlsx&#39;</span><span class="p">)</span> 
+<span class="n">HW_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;./HW.xlsx&#39;</span><span class="p">,</span><span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># We extract the two lists X = heights, Y = weights</span>
+<span class="n">X</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">HW_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">HW_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">M</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># We compute the coefficients A, B</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">fitLR</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="c1"># We plot the results</span>
+<span class="n">plotFitLR</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Linear Regression of Weight Y over Height X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/AI_Approach_3_0.png" src="_images/AI_Approach_3_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="next-we-use-sgd">
+<h3>Next, we use SGD<a class="headerlink" href="#next-we-use-sgd" title="Permalink to this headline">¶</a></h3>
+<p>Instead of using the formula for linear regression, we use SGD to improve a predictor <span class="math notranslate nohighlight">\(Y = a + bX\)</span>.  We do this by modifying <span class="math notranslate nohighlight">\(a\)</span> in the direction of the derivative of <span class="math notranslate nohighlight">\(- (a + bX_m - Y_m)^2\)</span> with respect to <span class="math notranslate nohighlight">\(a\)</span>. We also modify <span class="math notranslate nohighlight">\(b\)</span> in the direction of the derivative of <span class="math notranslate nohighlight">\(- (a + bX_m - Y_m)^2\)</span> with respect to <span class="math notranslate nohighlight">\(b\)</span>. Here, <span class="math notranslate nohighlight">\((X_m, Y_m)\)</span> is a pair picked randomly from the list of pairs, with replacement.  The goal is to minimize the squared error <span class="math notranslate nohighlight">\((a + bX - Y)^2\)</span>.  Thus, we change <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> in the direction of decrease of that expression, when evaluated on samples.  On average, this should decrease the squared error.</p>
+<p>In the example below, you will note that one only has <span class="math notranslate nohighlight">\(200\)</span> items in the data,
+but one performs tens of thousands of iterations
+by repeatedly resampling from the data. This trick is called <strong>bootstrap</strong>. It amounts to considering that
+our samples are representative of a vast population.  As you can see from the example, <strong>choosing the step sizes</strong> is a tricky tradeoff between speed of convergence and accuracy.</p>
+<p>Note a clear benefit of this approach: you don’t need to understand anything about statistics!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We define the widgets to select the step sizes for A and B and the number of iteration steps</span>
+<span class="n">dAd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="s1">&#39;30&#39;</span><span class="p">,</span><span class="s1">&#39;35&#39;</span><span class="p">,</span><span class="s1">&#39;40&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;dA(-2)&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">dBd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="s1">&#39;8&#39;</span><span class="p">,</span><span class="s1">&#39;9&#39;</span><span class="p">,</span><span class="s1">&#39;10&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;dB(-5)&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Nd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;20&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">,</span><span class="s1">&#39;40&#39;</span><span class="p">,</span><span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="s1">&#39;60&#39;</span><span class="p">,</span><span class="s1">&#39;70&#39;</span><span class="p">,</span><span class="s1">&#39;80&#39;</span><span class="p">,</span><span class="s1">&#39;90&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;80&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;N(3)&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Widgets defined successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Widgets defined successfully
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_interact docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We display the widgets and capture the parameters dA, dB, N</span>
+<span class="k">def</span> <span class="nf">dummy2</span><span class="p">(</span><span class="n">dAd</span><span class="p">,</span><span class="n">dBd</span><span class="p">,</span><span class="n">Nd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">dA</span><span class="p">,</span> <span class="n">dB</span><span class="p">,</span> <span class="n">N</span>
+    <span class="n">dA</span><span class="p">,</span> <span class="n">dB</span><span class="p">,</span> <span class="n">N</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dAd</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">dBd</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Nd</span><span class="p">)</span>
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy2</span><span class="p">,</span> <span class="n">dAd</span> <span class="o">=</span> <span class="n">dAd</span><span class="p">,</span> <span class="n">dBd</span> <span class="o">=</span> <span class="n">dBd</span><span class="p">,</span> <span class="n">Nd</span> <span class="o">=</span> <span class="n">Nd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "2b5bd676445245d499ad717d2890a8f1"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We define the algorithm that uses SGD to improve the estimator a + bX</span>
+<span class="k">def</span> <span class="nf">learnLinR</span><span class="p">(</span><span class="n">dA</span><span class="p">,</span><span class="n">dB</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>    
+    <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">*</span><span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="c1"># a[n], b[n] are the predictor coefficients after n steps</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">dA</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dA</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># These are the step sizes of the algorithm</span>
+    <span class="n">dB</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dB</span><span class="p">)</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># They are different for a and b</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># SGD algorithm</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span> <span class="c1"># this is bootstrap</span>
+        <span class="n">Xs</span><span class="p">,</span> <span class="n">Ys</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="c1"># pick a person randomly from the data</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">dA</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">Xs</span> <span class="o">-</span> <span class="n">Ys</span><span class="p">)</span>    <span class="c1"># SGD for a[n]</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">dB</span><span class="o">*</span><span class="n">Xs</span><span class="o">*</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">Xs</span> <span class="o">-</span> <span class="n">Ys</span><span class="p">)</span> <span class="c1"># SGD for b[n]</span>
+        
+<span class="c1"># We plot the evolution of the algorithm</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Learning the linear regression coefficients (A, B) with SGD&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;100B&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;100*b[n]&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;a[n]&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SGD iteration step n&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+
+<span class="c1"># We run the algorithm with the parameters selected by the widgets</span>
+<span class="n">learnLinR</span><span class="p">(</span><span class="n">dA</span><span class="p">,</span><span class="n">dB</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Here, A and B are the coefficients given by </span><span class="se">\n</span><span class="s1"> the linear regression formulas.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;To try different values of the step sizes dA and dB </span><span class="se">\n</span><span class="s1"> and the number of steps N, go back to previous cell and rerun.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sorry, this is needed because of a bug in Jupyter Book.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/AI_Approach_7_0.png" src="_images/AI_Approach_7_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Here, A and B are the coefficients given by 
+ the linear regression formulas.
+To try different values of the step sizes dA and dB 
+ and the number of steps N, go back to previous cell and rerun.
+Sorry, this is needed because of a bug in Jupyter Book.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="train-and-test">
+<h2>Train and Test<a class="headerlink" href="#train-and-test" title="Permalink to this headline">¶</a></h2>
+<p>Fitting the available data is not the real objective.  We want an estimator that works well on data we have not seen. That is, we want an estimator that <strong>generalizes</strong>. For instance, say that all the heights in our data are different. Fitting is then trivial: define a function <span class="math notranslate nohighlight">\(f(\cdot)\)</span> by <span class="math notranslate nohighlight">\(f(X_n) = Y_n\)</span> for <span class="math notranslate nohighlight">\(n = 1, \ldots, N\)</span>.  This function fits the available data perfectly.  However, it is not likely to generalize.  Say that one new person shows up with a height <span class="math notranslate nohighlight">\(X\)</span> that happens to be exactly <span class="math notranslate nohighlight">\(X_n\)</span>, for some <span class="math notranslate nohighlight">\(n\)</span> in our available data.  What are the odds that the weight <span class="math notranslate nohighlight">\(Y\)</span> of that person is equal to <span class="math notranslate nohighlight">\(Y_n\)</span>?  Very small indeed.  This is an example of <strong>overfitting</strong>.  It is likely that the linear regression <span class="math notranslate nohighlight">\(Y = a + bX_n\)</span> is a better estimate than <span class="math notranslate nohighlight">\(Y_n\)</span>.  By the way, it is possible to <strong>underfit</strong> the available data. An example would be an estimator <span class="math notranslate nohighlight">\(f(X) = a\)</span> where <span class="math notranslate nohighlight">\(a\)</span> is the average weight in the available data.  This estimator does not capture the dependency of the weight on the height.</p>
+<p>How do we know if our estimator generalizes well?  The trick is to divide <span class="math notranslate nohighlight">\({\cal D}\)</span> into two subsets: a <strong>training set</strong> <span class="math notranslate nohighlight">\({\cal T}\)</span> and a <strong>testing set</strong> <span class="math notranslate nohighlight">\({\cal D} \setminus {\cal T}\)</span>.  We use only <span class="math notranslate nohighlight">\({\cal T}\)</span> to learn <span class="math notranslate nohighlight">\((a, b)\)</span>.  We then try the predictor <span class="math notranslate nohighlight">\(a + bX\)</span> on <span class="math notranslate nohighlight">\({\cal D} \setminus {\cal T}\)</span>.  Let’s do this for the linear regression. We select <span class="math notranslate nohighlight">\(80\%\)</span> of the samples randomly in <span class="math notranslate nohighlight">\({\cal D}\)</span> to define <span class="math notranslate nohighlight">\({\cal T}\)</span>.  We then compute the linear regression based on <span class="math notranslate nohighlight">\({\cal T}\)</span>. Finally, we compute the average squared error on <span class="math notranslate nohighlight">\({\cal D} \setminus {\cal T}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sample is a function that picks random subsets</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">sample</span>
+
+<span class="c1"># We calculate 80% of the number of data</span>
+<span class="n">number_samples</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">M</span><span class="p">)</span>
+
+<span class="c1"># We select a random subset of the data to define the training set; the others are the testing set</span>
+<span class="n">Train</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">),</span><span class="n">number_samples</span><span class="p">)</span> <span class="c1"># random subset of range(M), no repetitions</span>
+<span class="n">Test</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">))</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">Train</span><span class="p">)))</span>
+<span class="n">Xtrain</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">Train</span><span class="p">]</span> 
+<span class="n">Ytrain</span> <span class="o">=</span> <span class="p">[</span><span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">Train</span><span class="p">]</span>
+<span class="n">Xtest</span> <span class="o">=</span> <span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">Test</span><span class="p">]</span>
+<span class="n">Ytest</span> <span class="o">=</span> <span class="p">[</span><span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">Test</span><span class="p">]</span>
+
+<span class="c1"># We run the SGD algorithm on the training set</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">fitLR</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">Ytrain</span><span class="p">)</span>
+
+<span class="c1"># We plot the resulting regression</span>
+<span class="n">plotFitLR</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Linear Regression of Weight Y over Height X with training set&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># This function calculates the rectified mean squared error of the regression divided by the average value</span>
+<span class="k">def</span> <span class="nf">rmseLR</span><span class="p">(</span><span class="n">listX</span><span class="p">,</span> <span class="n">listY</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">listX</span><span class="p">)):</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="p">(</span><span class="n">listY</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">A</span> <span class="o">-</span> <span class="n">B</span><span class="o">*</span><span class="n">listX</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">listX</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span><span class="o">/</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">listY</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="n">rmseTrain</span> <span class="o">=</span> <span class="n">rmseLR</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">Ytrain</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">rmseTest</span> <span class="o">=</span> <span class="n">rmseLR</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">Ytest</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rectified mse/average (%): train = &#39;</span><span class="p">,</span> <span class="n">rmseTrain</span><span class="p">,</span><span class="s1">&#39;; test = &#39;</span><span class="p">,</span> <span class="n">rmseTest</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/AI_Approach_9_0.png" src="_images/AI_Approach_9_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rectified mse/average (%): train =  8.0 ; test =  7.1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="regression-with-a-neural-network">
+<h2>Regression with a Neural Network<a class="headerlink" href="#regression-with-a-neural-network" title="Permalink to this headline">¶</a></h2>
+<p>The main idea in the example above is that one has a predictor <span class="math notranslate nohighlight">\(Y = f(\theta, X)\)</span> where <span class="math notranslate nohighlight">\(\theta\)</span>
+is a vector of parameters.  We chose <span class="math notranslate nohighlight">\(f(\theta, X) = a + bX\)</span>, so that the parameters were <span class="math notranslate nohighlight">\(\theta = (a, b)\)</span>.
+We then used SGD to learn the parameters:</p>
+<div class="math notranslate nohighlight">
+\[\theta(n+1) = \theta(n) - \delta \nabla (f(\theta, X_n) - Y)^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\nabla\)</span> indicates the vector of partial derivatives with respect to the components of <span class="math notranslate nohighlight">\(\theta\)</span>; also,
+<span class="math notranslate nohighlight">\(\delta\)</span> is a step size.  (In fact, if you look at the code, you will see that it is often useful to have different step sizes for the different components of <span class="math notranslate nohighlight">\(\theta\)</span>.)</p>
+<p>We could use a different function <span class="math notranslate nohighlight">\(f\)</span>. The key property that we need is that one should
+be able to compute the partial derivatives of <span class="math notranslate nohighlight">\(f(\theta, X)\)</span>.  Indeed, the product rule of calculus says that</p>
+<div class="math notranslate nohighlight">
+\[\nabla (f(\theta, X_n) - Y)^2 = 2 (f(\theta, X_n) - Y) \nabla f(\theta, X_n).\]</div>
+<p>In this section, we use a neural network for which, as you will see, it is easy to compute <span class="math notranslate nohighlight">\(\nabla f(\theta, X_n)\)</span>.</p>
+<p>Our neural network looks like this:</p>
+<p><img alt="title" src="_images/NN1.pdf" /></p>
+<p>This figure simply means that</p>
+<div class="math notranslate nohighlight">
+\[f(a, b, X_n) = \sum_{k =1}^K b_k \max\{X_n - a_k, 0\}.\]</div>
+<p>The <span class="math notranslate nohighlight">\(b_k\)</span> are called the <strong>output weights</strong> and the <span class="math notranslate nohighlight">\(a_k\)</span> the <strong>activation thresholds</strong> of the <span class="math notranslate nohighlight">\(K\)</span> <strong>neurons</strong>.
+Each neuron implements a nonlinear function <span class="math notranslate nohighlight">\(\max\{x - a, 0\}\)</span> and is called a <strong>rectified linear unit</strong> (ReLU).
+It is possible to appoximate an arbitrary function with such a network, as the figure below shows:</p>
+<p><img alt="title" src="_images/NN2.pdf" /></p>
+<p>If we order the <span class="math notranslate nohighlight">\(a_k\)</span> so that <span class="math notranslate nohighlight">\(a_1 &lt; a_2 &lt; \cdots &lt; a_K\)</span>, then we see that the function is zero for <span class="math notranslate nohighlight">\(x &lt; a_1\)</span>,
+then its slope is <span class="math notranslate nohighlight">\(b_1\)</span> from <span class="math notranslate nohighlight">\(a_1\)</span> to <span class="math notranslate nohighlight">\(a_2\)</span>, then <span class="math notranslate nohighlight">\(b_1 + b_2\)</span> from <span class="math notranslate nohighlight">\(a_2\)</span> to <span class="math notranslate nohighlight">\(a_3\)</span>, and so on.  Thus, the parameters of the network have a clear meaning.  The <span class="math notranslate nohighlight">\(a_k\)</span> are the corner points of the function and the <span class="math notranslate nohighlight">\(b_k\)</span> are the increments of the slope. The network is <strong>explainable</strong>.  As we will see later in the notes, this is not the case for more complex networks, which is somewhat worrysome.</p>
+<p>This network is a <strong>black box</strong>. It does not assume anything about the shape of the function one tries to approximate. This flexibility is handy when trying to recognize dogs and cats, but more about that later.  In the code below, we implement the neural network from scratch.  This is instructive and demystifying.  Later, we will use packages that do it for us.  Note that training the neural network with SGD takes some time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fnn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span> <span class="c1"># define the neural network function</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)):</span>
+        <span class="n">v</span><span class="o">+=</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">v</span>
+
+<span class="k">def</span> <span class="nf">fitNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">boost</span><span class="p">,</span><span class="n">delta</span><span class="p">):</span>  <span class="c1"># K neurons, boot*M resampling, delta = step size   </span>
+    <span class="n">M</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="c1"># the number of data points</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">boost</span><span class="o">*</span><span class="n">M</span> <span class="c1"># the number of iterations with bootstrap</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">N</span><span class="p">,</span><span class="n">K</span><span class="p">])</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="c1"># this allows to choose the value at min(HA)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">K</span><span class="p">):</span>  <span class="c1"># spread corner points evently  </span>
+        <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="n">K</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+    <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">K</span><span class="p">)</span><span class="c1"># why not?</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">))</span> <span class="c1"># bootstrap</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">m</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="c1"># SGD</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">-</span> <span class="n">delta</span><span class="o">*</span><span class="p">(</span><span class="n">fnn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">,:])</span><span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">*</span><span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="c1"># Note that we do not update the a[k] in this algorithm.  We could have.        </span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span>
+ 
+<span class="k">def</span> <span class="nf">plotFitNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">xaxis</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">fnn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xaxis</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;NN&#39;</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">rmseNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)):</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">fnn</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+    <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">y</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">fitNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">plotFitNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">fitLR</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">plotFitLR</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NN vs LR computed on the complete data set&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># We print the rmse for the NN and the LR</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rectified mse/average (%): NN = &#39;</span><span class="p">,</span> <span class="n">rmseNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="s1">&#39;; LR = &#39;</span><span class="p">,</span> <span class="n">rmseLR</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/AI_Approach_11_0.png" src="_images/AI_Approach_11_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rectified mse/average (%): NN =  8.8 ; LR =  7.8
+</pre></div>
+</div>
+</div>
+</div>
+<p>As before, we should test these approaches.  Again, we split the data into a training and a testing set. We fit on the training set and we evaluate the fit on the testing set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We train the neural network on the training set</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">fitNN</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">Ytrain</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="c1"># We plot the result</span>
+<span class="n">plotFitNN</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">Ytrain</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># We calculate the linear regression</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">fitLR</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">Ytrain</span><span class="p">)</span>
+<span class="c1"># We plot the result</span>
+<span class="n">plotFitLR</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">Ytrain</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NN vs. LR computed on the training set&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># We calculate and print the rmse for the NN and the LR on the testing set</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rectified mse/average (%): NN = &#39;</span><span class="p">,</span> <span class="n">rmseNN</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span><span class="n">Ytest</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="s1">&#39;; LR = &#39;</span><span class="p">,</span> <span class="n">rmseLR</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span><span class="n">Ytest</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/AI_Approach_13_0.png" src="_images/AI_Approach_13_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rectified mse/average (%): NN =  8.7 ; LR =  7.1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="another-example">
+<h2>Another Example<a class="headerlink" href="#another-example" title="Permalink to this headline">¶</a></h2>
+<p>In the previous example, a linear estimator is very good. Leet’s try another example where that is not the case. This example will show the benefits of using a neural network.  Here, the pairs are <span class="math notranslate nohighlight">\((X_n, Y_n)\)</span> where <span class="math notranslate nohighlight">\(X_n\)</span> is uniform in <span class="math notranslate nohighlight">\([-1, 1]\)</span> and <span class="math notranslate nohighlight">\(Y_n = g(X_n) + \xi_n\)</span> where <span class="math notranslate nohighlight">\(g(\cdot)\)</span> is a piecewise constant function, and <span class="math notranslate nohighlight">\(\xi_n\)</span> are Gaussian with mean zero and variance <span class="math notranslate nohighlight">\(0.09\)</span> (see Appendix 1).  Here, a linear regression is not likely to work well.  Let’s see if the neural network does better. Note that the NN cell takes time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Md</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;50&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">,</span> <span class="s1">&#39;150&#39;</span><span class="p">,</span> <span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">,</span><span class="s1">&#39;300&#39;</span><span class="p">,</span><span class="s1">&#39;350&#39;</span><span class="p">,</span><span class="s1">&#39;400&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">Kd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="s1">&#39;25&#39;</span><span class="p">,</span><span class="s1">&#39;30&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;20&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;K&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">deltad</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0.005&#39;</span><span class="p">,</span> <span class="s1">&#39;0.01&#39;</span><span class="p">,</span> <span class="s1">&#39;0.015&#39;</span><span class="p">,</span><span class="s1">&#39;0.02&#39;</span><span class="p">,</span><span class="s1">&#39;0.025&#39;</span><span class="p">,</span><span class="s1">&#39;0.03&#39;</span><span class="p">,</span><span class="s1">&#39;0.035&#39;</span><span class="p">,</span><span class="s1">&#39;0.04&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0.03&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;delta&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">boostd</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">,</span><span class="s1">&#39;100&#39;</span><span class="p">,</span><span class="s1">&#39;150&#39;</span><span class="p">,</span><span class="s1">&#39;200&#39;</span><span class="p">,</span><span class="s1">&#39;250&#39;</span><span class="p">,</span><span class="s1">&#39;300&#39;</span><span class="p">,</span><span class="s1">&#39;350&#39;</span><span class="p">,</span><span class="s1">&#39;400&#39;</span><span class="p">],</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;250&#39;</span><span class="p">,</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;boost&#39;</span><span class="p">,</span><span class="n">disabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Widgets defined successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Widgets defined successfully
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">Md</span><span class="p">,</span><span class="n">Kd</span><span class="p">,</span><span class="n">deltad</span><span class="p">,</span><span class="n">boostd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">M</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">delta</span><span class="p">,</span><span class="n">boost</span>
+    <span class="n">M</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">boost</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">Md</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Kd</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">deltad</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">boostd</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">Md</span><span class="o">=</span><span class="n">Md</span><span class="p">,</span><span class="n">Kd</span><span class="o">=</span><span class="n">Kd</span><span class="p">,</span><span class="n">deltad</span><span class="o">=</span><span class="n">deltad</span><span class="p">,</span><span class="n">boostd</span> <span class="o">=</span> <span class="n">boostd</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "195185c904d84fd283eb6e2d552436db"}
+</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">funcg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># We define the function</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">NNexperiment</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">delta</span><span class="p">,</span><span class="n">boost</span><span class="p">):</span>
+    <span class="c1"># We generate a data set with M samples</span>
+    <span class="n">Xs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">Ys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stdv</span> <span class="o">=</span> <span class="mf">0.3</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">funcg</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">stdv</span><span class="p">)</span>
+        <span class="n">Xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">Ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="c1"># We fit the data with a neural network that has 20 neurons</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">fitNN</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span><span class="n">Ys</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">boost</span><span class="p">,</span><span class="n">delta</span><span class="p">)</span>
+    <span class="n">cvNN</span> <span class="o">=</span> <span class="n">rmseNN</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span><span class="n">Ys</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">plotFitNN</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span><span class="n">Ys</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">xaxis</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">Xs</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.01</span><span class="o">*</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">Xs</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">Xs</span><span class="p">))</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">funcg</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xaxis</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;function&#39;</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">fitLR</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span><span class="n">Ys</span><span class="p">)</span>
+    <span class="n">plotFitLR</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span><span class="n">Ys</span><span class="p">,</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="n">cvLR</span> <span class="o">=</span> <span class="n">rmseLR</span><span class="p">(</span><span class="n">Xs</span><span class="p">,</span><span class="n">Ys</span><span class="p">,</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rectified mse/average (%): NN = &#39;</span><span class="p">,</span> <span class="n">cvNN</span><span class="p">,</span><span class="s1">&#39;; LR = &#39;</span><span class="p">,</span> <span class="n">cvLR</span><span class="p">)</span>
+
+<span class="n">NNexperiment</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">K</span><span class="p">,</span><span class="n">delta</span><span class="p">,</span><span class="n">boost</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/AI_Approach_17_0.png" src="_images/AI_Approach_17_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rectified mse/average (%): NN =  39.2 ; LR =  81.8
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this brief chapter we covered some key ideas in AI:</p>
+<ul class="simple">
+<li><p>use an algorithm that improves a parametric prediction function by trying it on the data</p></li>
+<li><p>neural networks are examples of parametric functions</p></li>
+<li><p>one commonly used algorithm to improve the function is SGD</p></li>
+<li><p>to test the generalizability of the function, split the data into a training set and a testing set.</p></li>
+</ul>
+<p>Researchers have built libraries of tools that are suited for different domains of application from object recognition and tracking to natural language processing.  We cover some of those tools in the subsequent chapters.</p>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"4090a4517c024a93b84e620eca5f453a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4f19e1a7aadf4e1887981310615d28af": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3dff7264be184ade95d7a79b0118f24f": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["5", "10", "15", "20", "25", "30", "35", "40"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "dA(-2)", "description_tooltip": null, "disabled": false, "index": 3, "layout": "IPY_MODEL_4090a4517c024a93b84e620eca5f453a", "style": "IPY_MODEL_4f19e1a7aadf4e1887981310615d28af"}}, "bf1b8634c1ff459fb6467aaf2da6e5f7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "543c64fe845c49f1b62303a74193359a": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "a6fe695e0e464c18b0c0947cf19b457f": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "dB(-5)", "description_tooltip": null, "disabled": false, "index": 3, "layout": "IPY_MODEL_bf1b8634c1ff459fb6467aaf2da6e5f7", "style": "IPY_MODEL_543c64fe845c49f1b62303a74193359a"}}, "fd7940d0918e4b0ead318354fe1b80f9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "20cf081dbb2040db9ee9ef4f7e51bb5d": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "e6aa33d5674646f69d7331ed12b36342": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "N(3)", "description_tooltip": null, "disabled": false, "index": 7, "layout": "IPY_MODEL_fd7940d0918e4b0ead318354fe1b80f9", "style": "IPY_MODEL_20cf081dbb2040db9ee9ef4f7e51bb5d"}}, "ca7ff57c3be649208c5fd982a950d77f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2b5bd676445245d499ad717d2890a8f1": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_3dff7264be184ade95d7a79b0118f24f", "IPY_MODEL_a6fe695e0e464c18b0c0947cf19b457f", "IPY_MODEL_e6aa33d5674646f69d7331ed12b36342", "IPY_MODEL_0d2ea3d8e58341ea9bc0256458fa4d6f"], "layout": "IPY_MODEL_ca7ff57c3be649208c5fd982a950d77f"}}, "5a095c3183d74e9f8f29140a3c72739f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "0d2ea3d8e58341ea9bc0256458fa4d6f": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_5a095c3183d74e9f8f29140a3c72739f", "msg_id": "", "outputs": []}}, "8f92e6d269b8458dbed54120f760a2ac": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "d89a439a2498425f8b605144cba1defb": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "c568e05dd4004098bc2f3c476dd5c5e9": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["50", "100", "150", "200", "250", "300", "350", "400"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "M", "description_tooltip": null, "disabled": false, "index": 1, "layout": "IPY_MODEL_8f92e6d269b8458dbed54120f760a2ac", "style": "IPY_MODEL_d89a439a2498425f8b605144cba1defb"}}, "f006618647c84711b5b34faa38b08a09": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "aee6176739b54d6f9360bb29cccfb956": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "5948a89b5889437f9c5e457b59005a0d": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["5", "10", "15", "20", "25", "30"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "K", "description_tooltip": null, "disabled": false, "index": 3, "layout": "IPY_MODEL_f006618647c84711b5b34faa38b08a09", "style": "IPY_MODEL_aee6176739b54d6f9360bb29cccfb956"}}, "16f249f66cc8484dbdda7f7d5c4291d2": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "24938ddb5ef3482887fcf51c2ff637ae": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "3c51d95d2f4042c68ff25ac4ba437042": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["0.005", "0.01", "0.015", "0.02", "0.025", "0.03", "0.035", "0.04"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "delta", "description_tooltip": null, "disabled": false, "index": 5, "layout": "IPY_MODEL_16f249f66cc8484dbdda7f7d5c4291d2", "style": "IPY_MODEL_24938ddb5ef3482887fcf51c2ff637ae"}}, "f5de478792cb48d28f13f8b97c3e0fcc": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "95c4d544d92a404a8f40a82c17db0039": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "346dfaacf8934ae38311376efab32546": {"model_name": "DropdownModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DropdownModel", "_options_labels": ["1", "10", "50", "100", "150", "200", "250", "300", "350", "400"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "DropdownView", "description": "boost", "description_tooltip": null, "disabled": false, "index": 6, "layout": "IPY_MODEL_f5de478792cb48d28f13f8b97c3e0fcc", "style": "IPY_MODEL_95c4d544d92a404a8f40a82c17db0039"}}, "2eaf4da1d6974576bd42b8f96409a047": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "195185c904d84fd283eb6e2d552436db": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_c568e05dd4004098bc2f3c476dd5c5e9", "IPY_MODEL_5948a89b5889437f9c5e457b59005a0d", "IPY_MODEL_3c51d95d2f4042c68ff25ac4ba437042", "IPY_MODEL_346dfaacf8934ae38311376efab32546", "IPY_MODEL_7fd47a83e876424081ca2edbf3c38950"], "layout": "IPY_MODEL_2eaf4da1d6974576bd42b8f96409a047"}}, "5f46dad04efa4601b7b45da29e0e0f3a": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7fd47a83e876424081ca2edbf3c38950": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_5f46dad04efa4601b7b45da29e0e0f3a", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/Notes_on_AI.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Welcome</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="image_processing.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Image Processing</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

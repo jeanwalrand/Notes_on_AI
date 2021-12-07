@@ -1,0 +1,571 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deep Learning &amp; Vision &#8212; Notes on AI</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Control and Learning" href="control.html" />
+    <link rel="prev" title="Classification" href="classification.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book2_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notes on AI</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="AI_Approach.html">
+   AI Approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="image_processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="estimation.html">
+   Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Deep Learning &amp; Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control.html">
+   Control and Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_2.html">
+   Appendix 2: Local Code
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/deep_learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/Notes_on_AI.git/main?urlpath=tree/docs/deep_learning.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#deep-neural-network">
+   Deep Neural Network
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dnn-and-object-recognition">
+   DNN and Object Recognition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#face-mesh-with-dnn">
+   Face Mesh with DNN
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#object-detection-with-yolo">
+   Object Detection with YOLO
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#residual-blocks">
+     Residual Blocks
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bounding-box">
+     Bounding Box
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#intersection-over-union-iou">
+     Intersection over union (IOU)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-yolo-dnn">
+     The YOLO DNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#object-tracking-with-deep-sort">
+   Object Tracking with Deep Sort
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="deep-learning-vision">
+<h1>Deep Learning &amp; Vision<a class="headerlink" href="#deep-learning-vision" title="Permalink to this headline">¶</a></h1>
+<p>We explore <strong>Deep Learning</strong> applied to <strong>computer vision</strong>.</p>
+<div class="section" id="deep-neural-network">
+<h2>Deep Neural Network<a class="headerlink" href="#deep-neural-network" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>DNN</strong> is a neural network with more than one hidden layer.  Here is one illustration:</p>
+<p><img alt="title" src="_images/NN3.pdf" /></p>
+<p>In this example, the neurons perform a <strong>nonlinear function</strong> (e.g., a sigmoid or a ReLU).  In other networks, some layers implement kernel <strong>convolutions</strong>.</p>
+<p>The intuition for DNNs is that initial layers extract <strong>features</strong> from the data. For instance, a first convolution layer may extract edges in particular directions or detect the presence of some colors. A second layer may then detect if the edges form a particular patterm, such as a rectangle or an oval. Following layers then make <strong>decisions</strong> based on the presence of such features.  The decisions are not based on known rules. Instead, one uses SGD or some other optimization algorithm to adjust the weights and thresholds of the decision layers so that they result in the correct decisions most of the time.  The initial convolution layers may not change if they have proved useful in related applications.  Thus, SGD is often used to adjust only some of the layers.</p>
+<p>Here are some illustrations of kernels used in convolution layers:</p>
+<p><img alt="title" src="_images/NN4.pdf" /></p>
+<p>Many DNNs also use <strong>pooling layers</strong> to reduce the amount of data.  The figure below illustrates the operations of such layers.</p>
+<p><img alt="title" src="_images/NN5.pdf" /></p>
+<p>Here is a DNN that combines convolution layers, pooling layers, and fully connected ReLU layers:</p>
+<p><img alt="title" src="_images/NN6.pdf" /></p>
+</div>
+<div class="section" id="dnn-and-object-recognition">
+<h2>DNN and Object Recognition<a class="headerlink" href="#dnn-and-object-recognition" title="Permalink to this headline">¶</a></h2>
+<p>The figure shows a DNN used to recognize articles of clothing.</p>
+<p><img alt="title" src="_images/NN7.pdf" /></p>
+<p>The <strong>flatten</strong> layer converts the <span class="math notranslate nohighlight">\(28 \times 28\)</span> pixel array into <span class="math notranslate nohighlight">\(784\)</span> parallel bytes that are all connected to <span class="math notranslate nohighlight">\(128\)</span> neurons. These <span class="math notranslate nohighlight">\(128\)</span> neurons are connected to <span class="math notranslate nohighlight">\(10\)</span> neurons that produce individual outputs.  The goal is to recognize which of <span class="math notranslate nohighlight">\(10\)</span> categories (e.g., sneaker, coat, bag, t-shirt) the picture corresponds to.  Each output is the confidence that the object is of the corresponding category. The DNN is trained with Adam (see below) on <span class="math notranslate nohighlight">\(60,000\)</span> labeled images and tested on <span class="math notranslate nohighlight">\(10,000\)</span> other labeled images.  Here is how the code looks using <strong>keras</strong>.</p>
+<p><img alt="title" src="_images/NN8.pdf" /></p>
+<p>The top instruction defines the DNN. The next instruction specifies the optimization algorithm (Adam) and the loss metric to minimize (cross-entropy, accuracy). The next instruction is the training of the network on the training data and its labels.  Next is the testing on the testing data. Finally, the code prints the accuracy measured on the testing data.</p>
+<p>Here the link to run the clothing classifier on Colab: <a class="reference external" href="https://www.tensorflow.org/tutorials/keras/classification">https://www.tensorflow.org/tutorials/keras/classification</a></p>
+<p><strong>Adam</strong> (adaptive moment estimation) is an optimization algorithm similar to SGD. The key innovation is the calculation of learning rates for the individual parameters by estimating the first and second moments of the partial derivatives. The intuition is that the step size should be smaller if the gradient estimates are very noisy, as measured by the ratio of the estimated mean value over the square root of the estimated second moment.
+See <a class="reference external" href="https://arxiv.org/pdf/1412.6980.pdf">https://arxiv.org/pdf/1412.6980.pdf</a> for details.</p>
+<p><strong>Cross-entropy</strong> is a measure of distance between two probability distributions <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\nu\)</span> on a finite set <span class="math notranslate nohighlight">\(\{1, \ldots, N\}\)</span>. It is defined as</p>
+<div class="math notranslate nohighlight">
+\[H(\mu, \nu) = - \sum_{n=1}^N \mu(n) \log_2( \nu(n)).\]</div>
+<p>As an example, assume that <span class="math notranslate nohighlight">\(\mu(m) = 1\)</span> for some <span class="math notranslate nohighlight">\(m \in \{1, \ldots, N\}\)</span>.  Then <span class="math notranslate nohighlight">\(H(\mu, \nu) = - \log_2(\nu(m))\)</span>,
+so that this loss is smaller if <span class="math notranslate nohighlight">\(\nu(m)\)</span> is large.  Thus, if <span class="math notranslate nohighlight">\(\mu(m) = 1\)</span> is the true probability (e.g., the item in the picture is <span class="math notranslate nohighlight">\(m\)</span>), the output <span class="math notranslate nohighlight">\(\nu\)</span> of the classifier is better if it gives a higher probability to <span class="math notranslate nohighlight">\(m.\)</span></p>
+<p>As another example, say that the item in the picture has a probability <span class="math notranslate nohighlight">\(0.8\)</span> of being a cat (<span class="math notranslate nohighlight">\(m = 1\)</span>) and <span class="math notranslate nohighlight">\(0.2\)</span>
+of being a dog (<span class="math notranslate nohighlight">\(m=2\)</span>), then the loss of a classifier that comes up with the distribution <span class="math notranslate nohighlight">\(\nu\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[H(\mu, \nu) = - 0.8 \log_2(\nu(1)) - 0.2 \log_2(\nu(2)).\]</div>
+<p>We plot this loss as a function of <span class="math notranslate nohighlight">\(p = \nu(1)\)</span>:
+As you see, this loss is minimized when <span class="math notranslate nohighlight">\(\nu\)</span> matches <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.005</span> <span class="o">+</span> <span class="mf">0.99</span><span class="o">*</span><span class="mf">0.001</span><span class="o">*</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1001</span><span class="p">)]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.8</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mf">0.2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cross-Entropy Loss of deciding that P(1) = p&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/deep_learning_2_0.png" src="_images/deep_learning_2_0.png" />
+</div>
+</div>
+<p>A more intuitive measure is the KL divergence <span class="math notranslate nohighlight">\(KL(\mu, \nu)\)</span> defined by</p>
+<div class="math notranslate nohighlight">
+\[KL(\mu, \nu) = H(\mu, \nu) - H(\mu) = \sum_{n=1}^N \mu(n) \log_2\left( \frac{\mu(n)}{\nu(n)}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(H(\mu) = - \sum \mu(n) \log_2(\mu(n))\)</span> is the entropy of <span class="math notranslate nohighlight">\(\mu\)</span>.  The entropy quantifies the uncertainty in an outcome with distribution <span class="math notranslate nohighlight">\(\mu\)</span>.  The KL divergence measures how unlikely it is for a random variable with distribution <span class="math notranslate nohighlight">\(\nu\)</span> to behave as if its distribution were <span class="math notranslate nohighlight">\(\mu\)</span>.  In a sense, <span class="math notranslate nohighlight">\(KL(\mu, \nu)\)</span> quantifies how
+different <span class="math notranslate nohighlight">\(\nu\)</span> is from <span class="math notranslate nohighlight">\(\mu\)</span>.  Thus, if the classifier produces the distribution <span class="math notranslate nohighlight">\(\nu\)</span>, its loss is measured by
+<span class="math notranslate nohighlight">\(KL(\mu, \nu)\)</span>.  Since <span class="math notranslate nohighlight">\(\mu\)</span> is fixed, the loss is also measured by <span class="math notranslate nohighlight">\(H(\mu, \nu)\)</span>.</p>
+<p>Here are two more words about the interpretration of <span class="math notranslate nohighlight">\(KL(\mu, \nu)\)</span>. Note that</p>
+<div class="math notranslate nohighlight">
+\[ 2^{J \times KL(\mu, \nu)} = \Pi_{n=1}^N \left( \frac{\mu(n)}{\nu(n)}\right)^{J \mu(n)},\]</div>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[2^{J \times KL(\mu, \nu)} = \frac{ \Pi_{n=1}^N \mu(n)^{J \mu(n)} }{\Pi_{n=1}^N \nu(n)^{J \mu(n)}}.\]</div>
+<p>Consider the event that <span class="math notranslate nohighlight">\(J\)</span> i.d.d. samples produce <span class="math notranslate nohighlight">\(J \times \mu(n)\)</span> samples
+with value <span class="math notranslate nohighlight">\(n\)</span> for each <span class="math notranslate nohighlight">\(n\)</span>, as they should if their distribution is <span class="math notranslate nohighlight">\(\mu\)</span>.  The numerator in the fraction above is the probability that this occurs when
+the samples have distribution <span class="math notranslate nohighlight">\(\mu\)</span>.  The denominator is the probability when the samples have distribution <span class="math notranslate nohighlight">\(\nu\)</span>.
+Thus, the fraction indicates how unlikely it is for <span class="math notranslate nohighlight">\(\nu\)</span> to produce the same numbers of the different sample
+values one expects under <span class="math notranslate nohighlight">\(\mu\)</span>.  If the fraction is large, this is very unlikely.  Thus, <span class="math notranslate nohighlight">\(KL\)</span> large means
+that <span class="math notranslate nohighlight">\(\nu\)</span> would not behave like <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+</div>
+<div class="section" id="face-mesh-with-dnn">
+<h2>Face Mesh with DNN<a class="headerlink" href="#face-mesh-with-dnn" title="Permalink to this headline">¶</a></h2>
+<p>The following code places a mesh on a face.  It is implemented as a DNN.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># IMPORTING LIBRARIES  --&gt; pip install mediapipe</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">mediapipe</span> <span class="k">as</span> <span class="nn">mp</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jeanwalrand/Notes_on_AI/main/&#39;</span>
+
+<span class="k">def</span> <span class="nf">getImage</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">im1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+    <span class="n">im2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">im1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">im2</span>
+    
+
+<span class="c1"># INITIALIZING OBJECTS</span>
+<span class="n">mp_drawing</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">solutions</span><span class="o">.</span><span class="n">drawing_utils</span>
+<span class="n">mp_drawing_styles</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">solutions</span><span class="o">.</span><span class="n">drawing_styles</span>
+<span class="n">mp_face_mesh</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">solutions</span><span class="o">.</span><span class="n">face_mesh</span>
+
+
+<span class="n">image_name</span> <span class="o">=</span> <span class="s1">&#39;einstein.png&#39;</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">getImage</span><span class="p">(</span><span class="n">image_name</span><span class="p">)</span>
+
+<span class="n">drawing_spec</span> <span class="o">=</span> <span class="n">mp_drawing</span><span class="o">.</span><span class="n">DrawingSpec</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">circle_radius</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># DETECT THE FACE LANDMARKS</span>
+<span class="k">with</span> <span class="n">mp_face_mesh</span><span class="o">.</span><span class="n">FaceMesh</span><span class="p">(</span><span class="n">min_detection_confidence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_tracking_confidence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="k">as</span> <span class="n">face_mesh</span><span class="p">:</span>
+
+
+    <span class="c1"># Flip the image horizontally and convert the color space from BGR to RGB</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+    <span class="c1"># To improve performance</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">writeable</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Detect the face landmarks</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">face_mesh</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+    <span class="c1"># To improve performance</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">writeable</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Convert back to the BGR color space</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2BGR</span><span class="p">)</span>
+
+    <span class="c1"># Draw the face mesh annotations on the image.</span>
+    <span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">multi_face_landmarks</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">face_landmarks</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">multi_face_landmarks</span><span class="p">:</span>
+        <span class="n">mp_drawing</span><span class="o">.</span><span class="n">draw_landmarks</span><span class="p">(</span>
+            <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span>
+            <span class="n">landmark_list</span><span class="o">=</span><span class="n">face_landmarks</span><span class="p">,</span>
+            <span class="n">connections</span><span class="o">=</span><span class="n">mp_face_mesh</span><span class="o">.</span><span class="n">FACEMESH_TESSELATION</span><span class="p">,</span>
+            <span class="n">landmark_drawing_spec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">connection_drawing_spec</span><span class="o">=</span><span class="n">mp_drawing_styles</span>
+            <span class="o">.</span><span class="n">get_default_face_mesh_tesselation_style</span><span class="p">())</span>
+
+<span class="c1"># Display the image</span>
+<span class="c1"># Display the image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Facial Mask on &#39;</span><span class="o">+</span><span class="n">image_name</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/deep_learning_5_0.png" src="_images/deep_learning_5_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="object-detection-with-yolo">
+<h2>Object Detection with YOLO<a class="headerlink" href="#object-detection-with-yolo" title="Permalink to this headline">¶</a></h2>
+<p>This section discusses object recognition with <strong>YOLO</strong> (you only lookk once).  Here are some examples:</p>
+<p><img alt="title" src="_images/NN10.pdf" /></p>
+<p>YOLO algorithm works using the following three techniques:</p>
+<ul class="simple">
+<li><p>Residual blocks</p></li>
+<li><p>Bounding box regression</p></li>
+<li><p>Intersection Over Union (IOU)</p></li>
+</ul>
+<div class="section" id="residual-blocks">
+<h3>Residual Blocks<a class="headerlink" href="#residual-blocks" title="Permalink to this headline">¶</a></h3>
+<p>First, the image is divided into various grids. Each grid has a dimension of S x S.</p>
+<p><img alt="title" src="_images/NN11.pdf" /></p>
+</div>
+<div class="section" id="bounding-box">
+<h3>Bounding Box<a class="headerlink" href="#bounding-box" title="Permalink to this headline">¶</a></h3>
+<p>Location, class <span class="math notranslate nohighlight">\(c\)</span>, confidence score (probability) <span class="math notranslate nohighlight">\(p_c\)</span>:</p>
+<p><img alt="title" src="_images/NN12.pdf" /></p>
+<p>If center of an object falls into a cell, that cell is responsible for predicting the bounding box and its confidence score.</p>
+<p><img alt="title" src="_images/NN12b.pdf" /></p>
+</div>
+<div class="section" id="intersection-over-union-iou">
+<h3>Intersection over union (IOU)<a class="headerlink" href="#intersection-over-union-iou" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Green = Actual</p></li>
+<li><p>Blue = Predicted</p></li>
+<li><p>Adjust weights so that Blue = Green!</p></li>
+</ul>
+<p>IOU is a measure of the aggreement of the actual and predicted bounding boxes.  Using SGD, one increases IOU for a training set of images with bounding boxes.</p>
+<p><img alt="title" src="_images/NN13.pdf" /></p>
+<p><img alt="title" src="_images/NN12c.pdf" /></p>
+</div>
+<div class="section" id="the-yolo-dnn">
+<h3>The YOLO DNN<a class="headerlink" href="#the-yolo-dnn" title="Permalink to this headline">¶</a></h3>
+<p><img alt="title" src="_images/NN14.pdf" /></p>
+<p>See <a class="reference external" href="https://arxiv.org/pdf/1506.02640v5.pdf">https://arxiv.org/pdf/1506.02640v5.pdf</a> for a discussion of YOLO.</p>
+</div>
+</div>
+<div class="section" id="object-tracking-with-deep-sort">
+<h2>Object Tracking with Deep Sort<a class="headerlink" href="#object-tracking-with-deep-sort" title="Permalink to this headline">¶</a></h2>
+<p>First, two examplse:</p>
+<p><img alt="title" src="_images/track_pedestrians.gif" /></p>
+<p><img alt="title" src="_images/track_all.gif" /></p>
+<p>Deep Sort (for Simple Online Realtime Tracking) uses Yolo to get the bounding boxes with confidence measures and tracks the boxes with a Kalman filter.</p>
+<p><img alt="title" src="_images/NN15.pdf" /></p>
+<p>The Kalman filter predicts the future position of the box. The algorithm then compares the predicted position and the actual one in the subsequent frame using the IOU measure.  If the measure is too small, the algorithm discontinues the tracking of the object and considers that the box belongs to a new track.  The algorithm uses also the category and confidence to match the box to the tracked object.  See <a class="reference external" href="https://arxiv.org/abs/1703.07402">https://arxiv.org/abs/1703.07402</a>
+for details.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/Notes_on_AI.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="classification.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Classification</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="control.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Control and Learning</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

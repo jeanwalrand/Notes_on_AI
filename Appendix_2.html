@@ -1,0 +1,737 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Appendix 2: Local Code &#8212; Notes on AI</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Appendix 1: Prerequisites" href="Appendix_1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book2_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notes on AI</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="AI_Approach.html">
+   AI Approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="image_processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="estimation.html">
+   Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep_learning.html">
+   Deep Learning &amp; Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control.html">
+   Control and Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Appendix 2: Local Code
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Appendix_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/Notes_on_AI.git/main?urlpath=tree/docs/Appendix_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="appendix-2-local-code">
+<h1>Appendix 2: Local Code<a class="headerlink" href="#appendix-2-local-code" title="Permalink to this headline">¶</a></h1>
+<p>To run computer vision software with your own camera, you should install software on your computer:</p>
+<ul class="simple">
+<li><p>Python</p></li>
+<li><p>OpenCV</p></li>
+<li><p>Dlib</p></li>
+<li><p>Mediapipe</p></li>
+</ul>
+<p>You can then run the code in the following cells.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Notebook: computer_vision4.ipynb</span>
+<span class="c1"># Detect 68 landmarks on a face</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">get_frontal_face_detector</span><span class="p">()</span>
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">shape_predictor</span><span class="p">(</span><span class="s1">&#39;shape_predictor_68_face_landmarks.dat&#39;</span><span class="p">)</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Capture the image from the webcam</span>
+    <span class="n">ret</span><span class="p">,</span> <span class="n">image</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="c1"># Convert the image color to grayscale</span>
+    <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="c1"># Detect the face</span>
+    <span class="n">rects</span> <span class="o">=</span> <span class="n">detector</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Detect landmarks for each face</span>
+    <span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
+        <span class="c1"># Get the landmark points</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
+	<span class="c1"># Convert it to the NumPy Array</span>
+        <span class="n">shape_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">68</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">):</span>
+            <span class="n">shape_np</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+        <span class="n">shape</span> <span class="o">=</span> <span class="n">shape_np</span>
+
+        <span class="c1"># Display the landmarks</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+	    <span class="c1"># Draw the circle to mark the keypoint </span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		
+    <span class="c1"># Display the image</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;Landmark Detection&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+
+    <span class="c1"># Press the escape button to terminate the code</span>
+    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Notebook: computer_vision5.ipynb</span>
+<span class="c1"># Detect yawning</span>
+
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">imutils</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+<span class="kn">from</span> <span class="nn">imutils</span> <span class="kn">import</span> <span class="n">face_utils</span>
+
+
+<span class="k">def</span> <span class="nf">eye_aspect_ratio</span><span class="p">(</span><span class="n">eye</span><span class="p">):</span>
+	<span class="n">A</span> <span class="o">=</span> <span class="n">distance</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">eye</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+	<span class="n">B</span> <span class="o">=</span> <span class="n">distance</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">eye</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+	<span class="n">C</span> <span class="o">=</span> <span class="n">distance</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eye</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+	<span class="n">ear</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">C</span><span class="p">)</span>
+	<span class="k">return</span> <span class="n">ear</span>
+
+<span class="n">thresh</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">frame_check</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">detect</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">get_frontal_face_detector</span><span class="p">()</span>
+<span class="n">predict</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">shape_predictor</span><span class="p">(</span><span class="s2">&quot;shape_predictor_68_face_landmarks.dat&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">lStart</span><span class="p">,</span> <span class="n">lEnd</span><span class="p">)</span> <span class="o">=</span> <span class="n">face_utils</span><span class="o">.</span><span class="n">FACIAL_LANDMARKS_IDXS</span><span class="p">[</span><span class="s2">&quot;left_eye&quot;</span><span class="p">]</span>
+<span class="p">(</span><span class="n">rStart</span><span class="p">,</span> <span class="n">rEnd</span><span class="p">)</span> <span class="o">=</span> <span class="n">face_utils</span><span class="o">.</span><span class="n">FACIAL_LANDMARKS_IDXS</span><span class="p">[</span><span class="s2">&quot;right_eye&quot;</span><span class="p">]</span>
+
+<span class="n">cap</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">flag</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+	<span class="n">ret</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+	<span class="n">frame</span> <span class="o">=</span> <span class="n">imutils</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">780</span><span class="p">)</span>
+	<span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+	<span class="n">subjects</span> <span class="o">=</span> <span class="n">detect</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+	<span class="k">for</span> <span class="n">subject</span> <span class="ow">in</span> <span class="n">subjects</span><span class="p">:</span>
+		<span class="n">shape</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">subject</span><span class="p">)</span>
+		<span class="n">shape</span> <span class="o">=</span> <span class="n">face_utils</span><span class="o">.</span><span class="n">shape_to_np</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span><span class="c1">#converting to NumPy Array</span>
+		<span class="n">leftEye</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="n">lStart</span><span class="p">:</span><span class="n">lEnd</span><span class="p">]</span>
+		<span class="n">rightEye</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="n">rStart</span><span class="p">:</span><span class="n">rEnd</span><span class="p">]</span>
+		<span class="n">leftEAR</span> <span class="o">=</span> <span class="n">eye_aspect_ratio</span><span class="p">(</span><span class="n">leftEye</span><span class="p">)</span>
+		<span class="n">rightEAR</span> <span class="o">=</span> <span class="n">eye_aspect_ratio</span><span class="p">(</span><span class="n">rightEye</span><span class="p">)</span>
+		<span class="n">ear</span> <span class="o">=</span> <span class="p">(</span><span class="n">leftEAR</span> <span class="o">+</span> <span class="n">rightEAR</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+		<span class="n">leftEyeHull</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">convexHull</span><span class="p">(</span><span class="n">leftEye</span><span class="p">)</span>
+		<span class="n">rightEyeHull</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">convexHull</span><span class="p">(</span><span class="n">rightEye</span><span class="p">)</span>
+		<span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">[</span><span class="n">leftEyeHull</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">[</span><span class="n">rightEyeHull</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">ear</span> <span class="o">&lt;</span> <span class="n">thresh</span><span class="p">:</span>
+			<span class="n">flag</span> <span class="o">+=</span> <span class="mi">1</span>
+			<span class="c1">#print (flag)</span>
+			<span class="k">if</span> <span class="n">flag</span> <span class="o">&gt;=</span> <span class="n">frame_check</span><span class="p">:</span>
+				<span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;****************ALERT!****************&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span>
+					<span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+				<span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;****************ALERT!****************&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">325</span><span class="p">),</span>
+					<span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+		<span class="k">else</span><span class="p">:</span>
+			<span class="n">flag</span> <span class="o">=</span> <span class="mi">0</span>
+	<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s2">&quot;Frame&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+	<span class="n">key</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span>
+	<span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="nb">ord</span><span class="p">(</span><span class="s2">&quot;q&quot;</span><span class="p">):</span>
+		<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+		<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+		<span class="k">break</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#===========================#</span>
+<span class="c1">#    Drowsiness Detection   #</span>
+<span class="c1">#   with Python and OpenCV  #</span>
+<span class="c1">#===========================#</span>
+<span class="c1">#    Konstantinos Thanos    #</span>
+<span class="c1">#    Mathematician, Msc     #</span>
+<span class="c1">#===========================#</span>
+
+<span class="c1"># Import packages</span>
+<span class="kn">from</span> <span class="nn">scipy.spatial</span> <span class="kn">import</span> <span class="n">distance</span> <span class="k">as</span> <span class="n">dist</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jeanwalrand/Notes_on_AI/main/&#39;</span>
+
+<span class="k">def</span> <span class="nf">getImage</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">im1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+    <span class="n">im2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">im1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">im2</span>
+
+<span class="n">im</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;coffee_break.png&#39;</span><span class="p">)</span>
+
+<span class="n">width</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">height</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">dim</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>
+ 
+<span class="c1"># resize image</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_AREA</span><span class="p">)</span>
+ 
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Eye Aspect Ratio (E.A.R.)</span>
+<span class="sd">Function to calculate eye aspect ratio as in paper :</span>
+<span class="sd">&quot;Real-Time Eye Blink Detection using Facial Landmarks [Soukupova, Cech]&quot;             </span>
+<span class="sd">Landmarks |   0  1  2  3  4  5</span>
+<span class="sd"> Left Eye : [36,37,38,39,40,41]</span>
+<span class="sd">Right Eye : [42,43,44,45,46,47]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">eye_aspect_ratio</span><span class="p">(</span><span class="n">eye</span><span class="p">):</span>
+     <span class="c1"># Vertical distances</span>
+     <span class="n">dist1</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">eye</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="c1"># P2-P6</span>
+     <span class="n">dist2</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">eye</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># P3-P5</span>
+     <span class="c1"># Horiontal distance</span>
+     <span class="n">dist3</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">eye</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">eye</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># P1-P4</span>
+
+     <span class="c1"># Eye Aspect Ratio (E.A.R.)</span>
+     <span class="n">ear</span> <span class="o">=</span> <span class="p">(</span><span class="n">dist1</span> <span class="o">+</span> <span class="n">dist2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">dist3</span><span class="p">)</span>
+
+     <span class="k">return</span> <span class="n">ear</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Lips Aspect Ratio (L.A.R.)</span>
+<span class="sd">Function to calculate lips aspect ratio in the same way as in E.A.R.</span>
+<span class="sd">Landmarks |   0  1  2  3  4  5  6  7</span>
+<span class="sd">     Lips : [60,61,62,63,64,65,66,67]</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">lips_aspect_ratio</span><span class="p">(</span><span class="n">lips</span><span class="p">):</span>
+     <span class="c1"># Vertical distance</span>
+     <span class="n">dist1</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">lips</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">lips</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span> <span class="c1"># L3-L7</span>
+     <span class="c1"># Horiontal distance</span>
+     <span class="n">dist2</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">euclidean</span><span class="p">(</span><span class="n">lips</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lips</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># L1-L5</span>
+
+     <span class="c1"># Lips Aspect Ratio (L.A.R.)</span>
+     <span class="n">lar</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dist1</span><span class="o">/</span><span class="n">dist2</span><span class="p">)</span>
+
+     <span class="k">return</span> <span class="n">lar</span>
+    
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Facial Landmarks for any face part</span>
+<span class="sd">Function to calculate facial landmark point coordinates (x,y),</span>
+<span class="sd">draw them on frame and return a numpy array with the corresponding points</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">draw_landmarks</span><span class="p">(</span><span class="n">face_part</span><span class="p">,</span> <span class="n">landmarks</span><span class="p">):</span>
+     <span class="n">landmarks_list</span> <span class="o">=</span> <span class="p">[]</span>
+     <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">face_part</span><span class="p">:</span>
+          <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">landmarks</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="n">point</span><span class="p">)</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">landmarks</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="n">point</span><span class="p">)</span><span class="o">.</span><span class="n">y</span>
+          <span class="n">landmarks_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">])</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+          
+     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">landmarks_list</span><span class="p">)</span>
+
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">get_frontal_face_detector</span><span class="p">()</span>
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">shape_predictor</span><span class="p">(</span><span class="s1">&#39;shape_predictor_68_face_landmarks.dat&#39;</span><span class="p">)</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># while True:</span>
+<span class="c1">#     # Capture the image from the webcam</span>
+<span class="c1">#     ret, image = cap.read()</span>
+<span class="c1">#     # Convert the image color to grayscale</span>
+<span class="c1">#     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)</span>
+<span class="c1">#     # Detect the face</span>
+<span class="c1">#     rects = detector(gray, 1)</span>
+<span class="c1">#     # Detect landmarks for each face</span>
+<span class="c1">#     for rect in rects:</span>
+<span class="c1">#         # Get the landmark points</span>
+<span class="c1">#         shape = predictor(gray, rect)</span>
+<span class="c1"># 	# Convert it to the NumPy Array</span>
+<span class="c1">#         shape_np = np.zeros((68, 2), dtype=&quot;int&quot;)</span>
+<span class="c1">#         for i in range(0, 68):</span>
+<span class="c1">#             shape_np[i] = (shape.part(i).x, shape.part(i).y)</span>
+<span class="c1">#         shape = shape_np</span>
+
+<span class="c1">#         # Display the landmarks</span>
+<span class="c1">#         for i, (x, y) in enumerate(shape):</span>
+<span class="c1"># 	    # Draw the circle to mark the keypoint </span>
+<span class="c1">#             cv2.circle(image, (x, y), 1, (0, 0, 255), -1)</span>
+		
+<span class="c1">#     # Display the image</span>
+<span class="c1">#     cv2.imshow(&#39;Landmark Detection&#39;, image)</span>
+
+<span class="c1">#     # Press the escape button to terminate the code</span>
+<span class="c1">#     if cv2.waitKey(10) == 27:</span>
+<span class="c1">#         break</span>
+
+<span class="c1"># cap.release()</span>
+
+
+
+<span class="c1"># Text settings</span>
+<span class="n">font</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">FONT_HERSHEY_SIMPLEX</span>
+<span class="n">font_scale</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+<span class="c1"># Initializations</span>
+<span class="n">frames</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># ear &amp; lar, threshold values</span>
+<span class="n">ear_thresh</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">lar_thresh</span> <span class="o">=</span> <span class="mf">0.3</span>
+
+<span class="c1"># Blink initializations</span>
+<span class="n">blink_counter</span><span class="p">,</span> <span class="n">total_blinks</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="c1"># Yawn initializations</span>
+<span class="n">yawn_counter</span><span class="p">,</span> <span class="n">total_yawns</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+     <span class="n">_</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+     <span class="n">frame</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># May not be necessary</span>
+     <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span> <span class="mi">2</span><span class="p">]</span>    <span class="c1"># Height and Width of frame</span>
+     
+     <span class="n">frames</span> <span class="o">+=</span> <span class="mi">1</span>
+
+     <span class="c1"># Grayscale</span>
+     <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+
+     <span class="c1"># Detect faces in the gray frame</span>
+     <span class="n">faces</span> <span class="o">=</span> <span class="n">detector</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+     <span class="c1"># Loop through each face</span>
+     <span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+          <span class="c1"># Determine facial landmarks</span>
+          <span class="n">facial_landmarks</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">face</span><span class="p">)</span>
+
+          <span class="c1"># Landmark indexes for eyes and lips</span>
+          <span class="n">left_eye</span> <span class="o">=</span> <span class="p">[</span><span class="mi">36</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mi">39</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">41</span><span class="p">]</span>
+          <span class="n">right_eye</span> <span class="o">=</span> <span class="p">[</span><span class="mi">42</span><span class="p">,</span><span class="mi">43</span><span class="p">,</span><span class="mi">44</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">46</span><span class="p">,</span><span class="mi">47</span><span class="p">]</span>
+          
+          <span class="n">lips</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span><span class="mi">61</span><span class="p">,</span><span class="mi">62</span><span class="p">,</span><span class="mi">63</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">66</span><span class="p">,</span><span class="mi">67</span><span class="p">]</span>
+
+          <span class="c1"># Convert to numpy array the above lists and</span>
+          <span class="c1"># draw the corresponding facial landmark points on frame</span>
+          <span class="n">left_eye_points</span> <span class="o">=</span> <span class="n">draw_landmarks</span><span class="p">(</span><span class="n">left_eye</span><span class="p">,</span> <span class="n">facial_landmarks</span><span class="p">)</span>
+          <span class="n">right_eye_points</span> <span class="o">=</span> <span class="n">draw_landmarks</span><span class="p">(</span><span class="n">right_eye</span><span class="p">,</span> <span class="n">facial_landmarks</span><span class="p">)</span>
+
+          <span class="n">lips_points</span> <span class="o">=</span> <span class="n">draw_landmarks</span><span class="p">(</span><span class="n">lips</span><span class="p">,</span> <span class="n">facial_landmarks</span><span class="p">)</span>
+
+          <span class="c1"># Find and draw the convex hulls of left and right eye, and lips</span>
+          <span class="n">left_eye_hull</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">convexHull</span><span class="p">(</span><span class="n">left_eye_points</span><span class="p">)</span>      
+          <span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">[</span><span class="n">left_eye_hull</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+          
+          <span class="n">right_eye_hull</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">convexHull</span><span class="p">(</span><span class="n">right_eye_points</span><span class="p">)</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">[</span><span class="n">right_eye_hull</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+          <span class="n">lips_hull</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">convexHull</span><span class="p">(</span><span class="n">lips_points</span><span class="p">)</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">drawContours</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="p">[</span><span class="n">lips_hull</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+          <span class="c1"># Calculate E.A.R. and L.A.R.</span>
+          <span class="n">left_ear</span> <span class="o">=</span> <span class="n">eye_aspect_ratio</span><span class="p">(</span><span class="n">left_eye_points</span><span class="p">)</span>    <span class="c1"># Left eye aspect ratio</span>
+          <span class="n">right_ear</span> <span class="o">=</span>  <span class="n">eye_aspect_ratio</span><span class="p">(</span><span class="n">right_eye_points</span><span class="p">)</span> <span class="c1"># Right eye aspect ratio</span>
+          <span class="n">ear</span> <span class="o">=</span> <span class="p">(</span><span class="n">left_ear</span> <span class="o">+</span> <span class="n">right_ear</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>              <span class="c1"># Average eye aspect ratio</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;E.A.R. : </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ear</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">font</span><span class="p">,</span> <span class="n">font_scale</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+          <span class="n">lar</span> <span class="o">=</span> <span class="n">lips_aspect_ratio</span><span class="p">(</span><span class="n">lips_points</span><span class="p">)</span> <span class="c1"># Lips aspect ratio</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;L.A.R. : </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lar</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span> <span class="n">font</span><span class="p">,</span> <span class="n">font_scale</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+          <span class="c1"># Check for blinks or yawns</span>
+          <span class="c1"># BLINK</span>
+          <span class="k">if</span> <span class="n">ear</span> <span class="o">&lt;</span> <span class="n">ear_thresh</span><span class="p">:</span>
+               <span class="n">blink_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+          <span class="k">else</span><span class="p">:</span>
+               <span class="k">if</span> <span class="n">blink_counter</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+                    <span class="n">total_blinks</span> <span class="o">+=</span> <span class="mi">1</span>
+               <span class="n">blink_counter</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;Blinks: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_blinks</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="n">font</span><span class="p">,</span> <span class="n">font_scale</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+          <span class="c1"># YAWN</span>
+          <span class="k">if</span> <span class="n">lar</span> <span class="o">&gt;</span> <span class="n">lar_thresh</span><span class="p">:</span>
+               <span class="n">yawn_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+          <span class="k">else</span><span class="p">:</span>
+               <span class="k">if</span> <span class="n">yawn_counter</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">total_yawns</span> <span class="o">+=</span> <span class="mi">1</span>
+               <span class="n">yawn_counter</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;Yawns: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_yawns</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">110</span><span class="p">),</span> <span class="n">font</span><span class="p">,</span> <span class="n">font_scale</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+          
+          <span class="c1"># Drowsiness Detection</span>
+          <span class="k">if</span> <span class="n">total_yawns</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">total_blinks</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">:</span>
+               <span class="n">frame</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span> <span class="n">w</span><span class="o">-</span><span class="mi">120</span><span class="p">:</span><span class="n">w</span><span class="o">-</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="n">image</span> <span class="c1"># Show coffee break image</span>
+               <span class="n">cv2</span><span class="o">.</span><span class="n">putText</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="s2">&quot;ALERT&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="o">-</span><span class="mi">120</span><span class="p">,</span> <span class="mi">160</span><span class="p">),</span> <span class="n">font</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+
+     <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;Frame&#39;</span><span class="p">,</span> <span class="n">frame</span><span class="p">)</span>
+     <span class="n">key</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+     <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+          <span class="k">break</span>
+     <span class="k">if</span> <span class="n">key</span><span class="o">==</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="ow">or</span> <span class="n">key</span><span class="o">==</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;R&#39;</span><span class="p">):</span>
+          <span class="n">total_blinks</span><span class="p">,</span> <span class="n">total_yawns</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span> <span class="c1"># Reset calculations by pressing &#39;r&#39; or &#39;R&#39;</span>
+
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">destroyAllWindows</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">error</span><span class="g g-Whitespace">                                     </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">26353</span><span class="n">f61e516</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span> 
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="c1"># resize image</span>
+<span class="ne">---&gt; </span><span class="mi">36</span> <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">INTER_AREA</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span> 
+<span class="g g-Whitespace">     </span><span class="mi">38</span> 
+
+<span class="ne">error</span>: OpenCV(3.4.5) /Users/travis/build/skvark/opencv-python/opencv/modules/imgproc/src/resize.cpp:3784: error: (-215:Assertion failed) !ssize.empty() in function &#39;resize&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Notebook: computer_vision7.ipynb</span>
+<span class="c1"># Fit mesh on face using mediapipe</span>
+
+<span class="c1"># IMPORTING LIBRARIES  --&gt; pip install mediapipe</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">mediapipe</span> <span class="k">as</span> <span class="nn">mp</span>
+
+<span class="c1"># INITIALIZING OBJECTS</span>
+<span class="n">mp_drawing</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">solutions</span><span class="o">.</span><span class="n">drawing_utils</span>
+<span class="n">mp_drawing_styles</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">solutions</span><span class="o">.</span><span class="n">drawing_styles</span>
+<span class="n">mp_face_mesh</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">solutions</span><span class="o">.</span><span class="n">face_mesh</span>
+
+<span class="n">drawing_spec</span> <span class="o">=</span> <span class="n">mp_drawing</span><span class="o">.</span><span class="n">DrawingSpec</span><span class="p">(</span><span class="n">thickness</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">circle_radius</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cap</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">VideoCapture</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># DETECT THE FACE LANDMARKS</span>
+<span class="k">with</span> <span class="n">mp_face_mesh</span><span class="o">.</span><span class="n">FaceMesh</span><span class="p">(</span><span class="n">min_detection_confidence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_tracking_confidence</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="k">as</span> <span class="n">face_mesh</span><span class="p">:</span>
+  <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">success</span><span class="p">,</span> <span class="n">image</span> <span class="o">=</span> <span class="n">cap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># Flip the image horizontally and convert the color space from BGR to RGB</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2RGB</span><span class="p">)</span>
+
+    <span class="c1"># To improve performance</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">writeable</span> <span class="o">=</span> <span class="kc">False</span>
+    
+    <span class="c1"># Detect the face landmarks</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">face_mesh</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+    <span class="c1"># To improve performance</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">writeable</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Convert back to the BGR color space</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2BGR</span><span class="p">)</span>
+    
+    <span class="c1"># Draw the face mesh annotations on the image.</span>
+    <span class="k">if</span> <span class="n">results</span><span class="o">.</span><span class="n">multi_face_landmarks</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">face_landmarks</span> <span class="ow">in</span> <span class="n">results</span><span class="o">.</span><span class="n">multi_face_landmarks</span><span class="p">:</span>
+        <span class="n">mp_drawing</span><span class="o">.</span><span class="n">draw_landmarks</span><span class="p">(</span>
+            <span class="n">image</span><span class="o">=</span><span class="n">image</span><span class="p">,</span>
+            <span class="n">landmark_list</span><span class="o">=</span><span class="n">face_landmarks</span><span class="p">,</span>
+            <span class="n">connections</span><span class="o">=</span><span class="n">mp_face_mesh</span><span class="o">.</span><span class="n">FACEMESH_TESSELATION</span><span class="p">,</span>
+            <span class="n">landmark_drawing_spec</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">connection_drawing_spec</span><span class="o">=</span><span class="n">mp_drawing_styles</span>
+            <span class="o">.</span><span class="n">get_default_face_mesh_tesselation_style</span><span class="p">())</span>
+
+    <span class="c1"># Display the image</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;MediaPipe FaceMesh&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+    
+    <span class="c1"># Terminate the process</span>
+    <span class="k">if</span> <span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span> <span class="o">==</span> <span class="mi">27</span><span class="p">:</span>
+      <span class="k">break</span>
+
+<span class="n">cap</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/Notes_on_AI.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Appendix_1.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Appendix 1: Prerequisites</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

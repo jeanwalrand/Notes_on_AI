@@ -1,0 +1,81 @@
+Traceback (most recent call last):
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/asyncio/base_events.py", line 583, in run_until_complete
+    return future.result()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+Af = [[0, 0.1], [0.35, 0.55], [0.7, 0.85]]
+N = 100
+X = np.zeros(N)
+Y = np.zeros(N)
+Z = np.zeros([2,N])
+for n in range(N):
+    X[n] = np.random.uniform(0,1)
+    for i in range(len(Af)):
+        Y[n] = max(Y[n], Af[i][0] <= X[n] and X[n] <= Af[i][1])
+def byX(item):
+    return item[0]
+Z = [[X[n],Y[n]] for n in range(N)]
+Z.sort(key=byX)
+        
+# We look for the break points B where K-means function changes values and the values C of the function
+
+Kset = [3,5,9]
+i = 0
+for K in Kset:
+    B = [0] 
+    C = []
+    A = Z[:K] # current set of closest neighbors
+    Inext = K # index of next point
+    while Inext < M:
+        J = [item[1] for item in A]
+        C.append(np.average(J))
+        B.append((A[0][0] + Z[Inext][0])/2)
+        del A[0]
+        A.append(Z[Inext])
+        Inext += 1
+    J = [item[1] for item in A]
+    C.append(np.average(J))        
+    plt.step(B,C,where='post',label='K = '+str(K))      
+        
+        
+S = []
+V = []
+for i in range(len(Af)):
+    S.append(Af[i][0])
+    V.append(1)
+    S.append(Af[i][1])
+    V.append(0)
+S.append(1)
+V.append(0)
+plt.scatter(X,Y,label='X,Y')
+plt.step(S,V,where='post',label='function') 
+plt.legend()
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-2-919384c0a199>[0m in [0;36m<module>[0;34m[0m
+[1;32m     22[0m     [0mA[0m [0;34m=[0m [0mZ[0m[0;34m[[0m[0;34m:[0m[0mK[0m[0;34m][0m [0;31m# current set of closest neighbors[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     23[0m     [0mInext[0m [0;34m=[0m [0mK[0m [0;31m# index of next point[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 24[0;31m     [0;32mwhile[0m [0mInext[0m [0;34m<[0m [0mM[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     25[0m         [0mJ[0m [0;34m=[0m [0;34m[[0m[0mitem[0m[0;34m[[0m[0;36m1[0m[0;34m][0m [0;32mfor[0m [0mitem[0m [0;32min[0m [0mA[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m     26[0m         [0mC[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0maverage[0m[0;34m([0m[0mJ[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'M' is not defined
+NameError: name 'M' is not defined
+

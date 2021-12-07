@@ -1,0 +1,61 @@
+Traceback (most recent call last):
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/asyncio/base_events.py", line 583, in run_until_complete
+    return future.result()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def dummy(Nd):
+    global N
+    N = int(Nd)
+    
+N = widgets.Dropdown(options=['100', '200', '500','1000','2000','3000','4000','5000'],value='1000',description='N',disabled=False)
+
+
+
+
+
+N = widgets.IntSlider(description='N', min = 100, max = 5000, step = 100, value = 1000, position = 'bottom', continuous_update = False)
+z = widgets.interactive(dummy,N=N) 
+display(z)
+display(button) 
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+[0;32m<ipython-input-18-e28a0ba03094>[0m in [0;36m<module>[0;34m[0m
+[1;32m     10[0m [0;34m[0m[0m
+[1;32m     11[0m [0mN[0m [0;34m=[0m [0mwidgets[0m[0;34m.[0m[0mIntSlider[0m[0;34m([0m[0mdescription[0m[0;34m=[0m[0;34m'N'[0m[0;34m,[0m [0mmin[0m [0;34m=[0m [0;36m100[0m[0;34m,[0m [0mmax[0m [0;34m=[0m [0;36m5000[0m[0;34m,[0m [0mstep[0m [0;34m=[0m [0;36m100[0m[0;34m,[0m [0mvalue[0m [0;34m=[0m [0;36m1000[0m[0;34m,[0m [0mposition[0m [0;34m=[0m [0;34m'bottom'[0m[0;34m,[0m [0mcontinuous_update[0m [0;34m=[0m [0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 12[0;31m [0mz[0m [0;34m=[0m [0mwidgets[0m[0;34m.[0m[0minteractive[0m[0;34m([0m[0mdummy[0m[0;34m,[0m[0mN[0m[0;34m=[0m[0mN[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     13[0m [0mdisplay[0m[0;34m([0m[0mz[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     14[0m [0mdisplay[0m[0;34m([0m[0mbutton[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/lib/python3.7/site-packages/ipywidgets/widgets/interaction.py[0m in [0;36m__init__[0;34m(self, _interactive__interact_f, _interactive__options, **kwargs)[0m
+[1;32m    186[0m         [0mself[0m[0;34m.[0m[0mauto_display[0m [0;34m=[0m [0m__options[0m[0;34m.[0m[0mget[0m[0;34m([0m[0;34m"auto_display"[0m[0;34m,[0m [0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    187[0m [0;34m[0m[0m
+[0;32m--> 188[0;31m         [0mnew_kwargs[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mfind_abbreviations[0m[0;34m([0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    189[0m         [0;31m# Before we proceed, let's make sure that the user has passed a set of args+kwargs[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    190[0m         [0;31m# that will lead to a valid call of the function. This protects against unspecified[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/opt/anaconda3/lib/python3.7/site-packages/ipywidgets/widgets/interaction.py[0m in [0;36mfind_abbreviations[0;34m(self, kwargs)[0m
+[1;32m    286[0m             [0;32mfor[0m [0mname[0m[0;34m,[0m [0mvalue[0m[0;34m,[0m [0mdefault[0m [0;32min[0m [0m_yield_abbreviations_for_parameter[0m[0;34m([0m[0mparam[0m[0;34m,[0m [0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    287[0m                 [0;32mif[0m [0mvalue[0m [0;32mis[0m [0mempty[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 288[0;31m                     [0;32mraise[0m [0mValueError[0m[0;34m([0m[0;34m'cannot find widget or abbreviation for argument: {!r}'[0m[0;34m.[0m[0mformat[0m[0;34m([0m[0mname[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    289[0m                 [0mnew_kwargs[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0;34m([0m[0mname[0m[0;34m,[0m [0mvalue[0m[0;34m,[0m [0mdefault[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    290[0m         [0;32mreturn[0m [0mnew_kwargs[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mValueError[0m: cannot find widget or abbreviation for argument: 'Nd'
+ValueError: cannot find widget or abbreviation for argument: 'Nd'
+

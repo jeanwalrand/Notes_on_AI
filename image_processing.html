@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Processing &#8212; Notes on AI</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Estimation" href="estimation.html" />
+    <link rel="prev" title="AI Approach" href="AI_Approach.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book2_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notes on AI</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="AI_Approach.html">
+   AI Approach
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="estimation.html">
+   Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep_learning.html">
+   Deep Learning &amp; Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control.html">
+   Control and Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_2.html">
+   Appendix 2: Local Code
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/image_processing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/Notes_on_AI.git/main?urlpath=tree/docs/image_processing.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convolution-kernels">
+   Convolution Kernels
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#object-detection">
+   Object Detection
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-faces-in-image">
+     Finding Faces in Image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-eyes-in-image">
+     Finding Eyes in Image
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-facial-landmarks">
+     Finding Facial Landmarks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#to-run-in-real-time">
+   To Run in Real Time
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="image-processing">
+<h1>Image Processing<a class="headerlink" href="#image-processing" title="Permalink to this headline">¶</a></h1>
+<p>This chapter explains some basic image processing techniques.</p>
+<div class="section" id="convolution-kernels">
+<h2>Convolution Kernels<a class="headerlink" href="#convolution-kernels" title="Permalink to this headline">¶</a></h2>
+<p>An image is a collection of pixels that are indexed by <span class="math notranslate nohighlight">\((x, y)\)</span> where <span class="math notranslate nohighlight">\(x\)</span> is the coordinate along the horizontal axis, going from left to right and <span class="math notranslate nohighlight">\(y\)</span> is the coordinate along the vertical axis, going from top to bottom.  Thus, <span class="math notranslate nohighlight">\((0, 0)\)</span> is the top-left corner.  In <span class="math notranslate nohighlight">\(8\)</span>-bit RGB encoding, each pixel is represented by three <span class="math notranslate nohighlight">\(8\)</span>-bit numbers that indicate the amount of R, G, B respectively.  Thus, <span class="math notranslate nohighlight">\((255,0,0)\)</span> is red and <span class="math notranslate nohighlight">\((255,255,255)\)</span> is white.  In <span class="math notranslate nohighlight">\(8\)</span>-bit gray encoding, each pixel is represented by an <span class="math notranslate nohighlight">\(8\)</span>-bit number that indicates the amount of white.</p>
+<p>Consider a <span class="math notranslate nohighlight">\(W \times H\)</span> picture <span class="math notranslate nohighlight">\(P\)</span> that is <span class="math notranslate nohighlight">\(8\)</span>-bit gray encoded. Let <span class="math notranslate nohighlight">\(K\)</span> be a <span class="math notranslate nohighlight">\(M \times M\)</span> matrix, called the <strong>kernel</strong>.  Here, <span class="math notranslate nohighlight">\(M\)</span> is a small odd number, say <span class="math notranslate nohighlight">\(3\)</span> or <span class="math notranslate nohighlight">\(5\)</span>. The transformed picture <span class="math notranslate nohighlight">\(P*K\)</span> is defined as follows.  The pixel <span class="math notranslate nohighlight">\((x, y)\)</span> in <span class="math notranslate nohighlight">\(P*K\)</span> is computed by placing the center of <span class="math notranslate nohighlight">\(K\)</span> on top of pixel <span class="math notranslate nohighlight">\((x, y)\)</span> in <span class="math notranslate nohighlight">\(P\)</span> and multiplying each pixel under <span class="math notranslate nohighlight">\(K\)</span> by the corresponding element in <span class="math notranslate nohighlight">\(K\)</span> and adding up the products, and projecting the value on <span class="math notranslate nohighlight">\(\{0, \ldots, 255\}\)</span>.  If some elements of <span class="math notranslate nohighlight">\(K\)</span> fall outside <span class="math notranslate nohighlight">\(P\)</span>, consider the pixel values to be zero. Here is an example:</p>
+<p><img alt="title" src="_images/kernel1.pdf" /></p>
+<p>This kernel performs an elementary edge detection.  The following pictures, borrowed from wikipedia, illustrate the effect of some kernels on images.</p>
+<p><img alt="title" src="_images/kernel2.pdf" /></p>
+<p>We implement some kernel transformations using a package called <strong>OpenCV</strong> that we import as <strong>cv2</strong>.  To run the code, click the rocket above and wait until the server is <strong>ready</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Javascript</span>
+<span class="c1">#from toggle_cell import toggle_code as hide_code</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">binom</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">join</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="n">IMG</span> <span class="o">=</span> <span class="s1">&#39;Original&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/jeanwalrand/Notes_on_AI/main/&#39;</span>
+
+<span class="k">def</span> <span class="nf">getImage</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="o">+</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">im1</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
+    <span class="n">im2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">im1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">im2</span>
+    
+<span class="n">img0</span> <span class="o">=</span> <span class="n">getImage</span><span class="p">(</span><span class="s2">&quot;Melanie.jpg&quot;</span><span class="p">)</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mi">9</span>
+<span class="n">imgGray0</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img0</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2GRAY</span><span class="p">)</span>
+<span class="n">imgBlur0</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">imgGray0</span><span class="p">,(</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">imgCanny0</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">img0</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">imgDilation0</span> <span class="o">=</span> \
+<span class="n">cv2</span><span class="o">.</span><span class="n">dilate</span><span class="p">(</span><span class="n">imgCanny0</span><span class="p">,</span><span class="n">kernel</span><span class="p">,</span><span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">imgEroded0</span> <span class="o">=</span> \
+<span class="n">cv2</span><span class="o">.</span><span class="n">erode</span><span class="p">(</span><span class="n">imgDilation0</span><span class="p">,</span><span class="n">kernel</span><span class="p">,</span><span class="n">iterations</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">imgCropped0</span> <span class="o">=</span> <span class="n">img0</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">250</span><span class="p">,</span><span class="mi">90</span><span class="p">:</span><span class="mi">230</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">showImage</span><span class="p">(</span><span class="n">IMG</span><span class="p">):</span>
+    <span class="n">captions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Original&#39;</span><span class="p">,</span><span class="s1">&#39;Gray&#39;</span><span class="p">,</span> <span class="s1">&#39;Blur&#39;</span><span class="p">,</span><span class="s1">&#39;Canny&#39;</span><span class="p">,</span> \
+                <span class="s1">&#39;Dilation&#39;</span><span class="p">,</span> <span class="s1">&#39;Eroded&#39;</span><span class="p">,</span><span class="s1">&#39;Cropped&#39;</span><span class="p">]</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">img0</span><span class="p">,</span><span class="n">imgGray0</span><span class="p">,</span><span class="n">imgBlur0</span><span class="p">,</span><span class="n">imgCanny0</span><span class="p">,</span> \
+              <span class="n">imgDilation0</span><span class="p">,</span> <span class="n">imgEroded0</span><span class="p">,</span> <span class="n">imgCropped0</span><span class="p">]</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="n">captions</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">IMG</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">IMG</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">showImage</span><span class="p">(</span><span class="n">IMG</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;To see different versions of the image, select one by running next cell and run this cell again.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sorry again for this two-step process.  Hopefully, someone will fix Jupyter Book.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/image_processing_2_0.png" src="_images/image_processing_2_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>To see different versions of the image, select one by running next cell and run this cell again.
+Sorry again for this two-step process.  Hopefully, someone will fix Jupyter Book.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dummy</span><span class="p">(</span><span class="n">IMGd</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">IMG</span>
+    <span class="n">IMG</span> <span class="o">=</span> <span class="n">IMGd</span>
+
+<span class="n">IMG</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Original&#39;</span><span class="p">,</span> <span class="s1">&#39;Gray&#39;</span><span class="p">,</span> <span class="s1">&#39;Blur&#39;</span><span class="p">,</span><span class="s1">&#39;Canny&#39;</span><span class="p">,</span>\
+             <span class="s1">&#39;Dilation&#39;</span><span class="p">,</span><span class="s1">&#39;Eroded&#39;</span><span class="p">,</span><span class="s1">&#39;Cropped&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">,</span> <span class="c1"># Defaults to &#39;pineapple&#39;</span>
+    <span class="n">layout</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;max-content&#39;</span><span class="p">},</span> 
+    <span class="c1"># If the items&#39; names are long</span>
+    <span class="c1">#description=&#39;Pizza topping:&#39;,</span>
+    <span class="n">disabled</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive</span><span class="p">(</span><span class="n">dummy</span><span class="p">,</span> <span class="n">IMGd</span><span class="o">=</span><span class="n">IMG</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "de1967d5fdce4b968f66c7402862acab"}
+</script></div>
+</div>
+</div>
+<div class="section" id="object-detection">
+<h2>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h2>
+<p>To detect objects in an image, many algorithms compute local gradients.</p>
+<p>The <strong>Canny edge detector</strong> above computes the gradients of the image in different directions and thresholds these gradients.</p>
+<p>Another gradient based algorithm is <strong>HOG</strong> (histogram of oriented gradients). HOG computes the horizontal and vertical gradients using kernels <span class="math notranslate nohighlight">\([-1,0,1]\)</span>. HOG then divides the image into cells and calculates a histogram of the magnitudes of the gradients in the cells. HOG normalizes the values of these gradients over image blocks (groups of cells) to make them insensitive to local illumination and shadowing. HOG is effective at detecting perdestrians in images and videos.</p>
+<p>The <strong>Haar cascades</strong> is a related method for detecting objects.  It is based on the <strong>Haar wavelet</strong> illustrated below.</p>
+<p><img alt="title" src="_images/Haar.pdf" /></p>
+<p>By transforming the image with different ‘scaled’ wavelets, one can detect transitions. By doing this in two dimensions, one can identify ‘rectangular’ shapes. The idea is illustrated below.</p>
+<p><img alt="title" src="_images/haarTransforms.gif" /></p>
+<div class="section" id="finding-faces-in-image">
+<h3>Finding Faces in Image<a class="headerlink" href="#finding-faces-in-image" title="Permalink to this headline">¶</a></h3>
+<p>The cell below illustrates this method used to detect faces in an image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_name</span> <span class="o">=</span> <span class="s2">&quot;people.jpeg&quot;</span>
+<span class="k">def</span> <span class="nf">findFaces</span><span class="p">(</span><span class="n">image_name</span><span class="p">):</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">getImage</span><span class="p">(</span><span class="n">image_name</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Image: &#39;</span><span class="o">+</span> <span class="n">image_name</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">faceCascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">haarcascades</span> <span class="o">+</span> <span class="s1">&#39;haarcascade_frontalface_default.xml&#39;</span><span class="p">)</span>
+    <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+    <span class="n">faces</span> <span class="o">=</span> <span class="n">faceCascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span><span class="mf">1.1</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">image</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>    
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Face Detection in image &#39;</span><span class="o">+</span> <span class="n">image_name</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">image</span><span class="p">,</span> <span class="n">gray</span><span class="p">,</span> <span class="n">faces</span>
+<span class="n">findFaces</span><span class="p">(</span><span class="n">image_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Try changing image_name from people.jpb to people2.jpg&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; or people3.jpg then run the cell again.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/image_processing_5_0.png" src="_images/image_processing_5_0.png" />
+<img alt="_images/image_processing_5_1.png" src="_images/image_processing_5_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try changing image_name from people.jpb to people2.jpg
+ or people3.jpg then run the cell again.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-eyes-in-image">
+<h3>Finding Eyes in Image<a class="headerlink" href="#finding-eyes-in-image" title="Permalink to this headline">¶</a></h3>
+<p>Using Haar cascades, one can also find eyes in an image.  We try that below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image_name</span> <span class="o">=</span> <span class="s1">&#39;beatles.png&#39;</span> <span class="c1"># try &#39;einstein.png&#39; or &#39;ralucanu.png&#39;</span>
+<span class="n">eye_cascade</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CascadeClassifier</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">haarcascades</span> <span class="o">+</span> <span class="s1">&#39;haarcascade_eye.xml&#39;</span><span class="p">)</span>
+<span class="n">image</span><span class="p">,</span> <span class="n">gray</span><span class="p">,</span> <span class="n">faces</span> <span class="o">=</span> <span class="n">findFaces</span><span class="p">(</span><span class="n">image_name</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">)</span> <span class="ow">in</span> <span class="n">faces</span><span class="p">:</span>
+    <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">image</span><span class="p">,(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">),(</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">,</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">),(</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">roi_gray</span> <span class="o">=</span> <span class="n">gray</span><span class="p">[</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">]</span>
+    <span class="n">roi_color</span> <span class="o">=</span> <span class="n">image</span><span class="p">[</span><span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">w</span><span class="p">]</span>
+    <span class="n">eyes</span> <span class="o">=</span> <span class="n">eye_cascade</span><span class="o">.</span><span class="n">detectMultiScale</span><span class="p">(</span><span class="n">roi_gray</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">ex</span><span class="p">,</span><span class="n">ey</span><span class="p">,</span><span class="n">ew</span><span class="p">,</span><span class="n">eh</span><span class="p">)</span> <span class="ow">in</span> <span class="n">eyes</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ey</span> <span class="o">&lt;</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">h</span><span class="p">:</span>
+            <span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">roi_color</span><span class="p">,(</span><span class="n">ex</span><span class="p">,</span><span class="n">ey</span><span class="p">),(</span><span class="n">ex</span><span class="o">+</span><span class="n">ew</span><span class="p">,</span><span class="n">ey</span><span class="o">+</span><span class="n">eh</span><span class="p">),(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Finding eyes in faces&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Try replacing image_name by einstein.png, beatles.png, or ralucanu.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/image_processing_7_0.png" src="_images/image_processing_7_0.png" />
+<img alt="_images/image_processing_7_1.png" src="_images/image_processing_7_1.png" />
+<img alt="_images/image_processing_7_2.png" src="_images/image_processing_7_2.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Try replacing image_name by einstein.png, beatles.png, or ralucanu.png
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-facial-landmarks">
+<h3>Finding Facial Landmarks<a class="headerlink" href="#finding-facial-landmarks" title="Permalink to this headline">¶</a></h3>
+<p>We explain an algorithm that finds 68 facial landmarks, as shown in the figure below.</p>
+<p><img alt="title" src="_images/68landmarks.pdf" /></p>
+<p>The algorithm uses <strong>boosted regression trees</strong> that are trained on thousands of labeled images, that is images on which the 68 landmarks have been indicated by hand.  First we explain regression trees, then boosted trees.</p>
+<p>A <strong>regression tree</strong> is an estimation method that roughly works as follows.  Imagine trying to find a rule for estimating the price of houses in Berkeley.  We have a list of sale prices over the last two years. As a first step, we divide the city in two by drawing a red line north-to-south (see picture below) and we find the average price <span class="math notranslate nohighlight">\(P_E\)</span> of houses to the east of that line and the average price <span class="math notranslate nohighlight">\(P_W\)</span> to the west of that line, as calculated from the recent sales.   Our first estimator is that the price of a house that is to the east of the line is <span class="math notranslate nohighlight">\(P_E\)</span> and to the west of the line is <span class="math notranslate nohighlight">\(P_W\)</span>.</p>
+<p><img alt="title" src="_images/berkeley.pdf" /></p>
+<p>We choose where to draw the line so as to minimize the resulting mean squared error over the available list.  To improve this estimator, we further subdivide the two regions with blue lines as shown in the figure above.  We repeat that step a number of times.  After this process, we have divided the city into rectangles and our estimated price of a house is the average price for the recent sales in the rectangle in which the house is.</p>
+<p>Two observations:</p>
+<ul class="simple">
+<li><p>The process is myopic.  The first subdivision is chosen to minimize the mean squared error as if we did not further subdivide the map, and the same is true for each step. This is for simplicity.</p></li>
+<li><p>Too few steps result in underfitting by overlooking clear trends in the available data.  Too many steps result in overfitting by matching prices of a few houses that may be outliers because of specific features.</p></li>
+</ul>
+<p><strong>Boosted regression trees</strong> are obtained by computing regression trees for the gradients of the estimators.  Going back to the Berkeley example, let us consider the final estimator.  For each house in our available list, we determine whether the estimated price is too high or too low, and by how much.  This produces a list of <span class="math notranslate nohighlight">\((location, error)\)</span> for each house in the available data.  We then build a regression tree as before for estimating the error as a function of the location.  We then add a small multiple of the new regression tree to the previous one.  This improves our estimator.  Then, as you certainly guessed, we repeat the last step with the new combined estimator, and so on.</p>
+<p>Let us try the algorithm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">dlib</span>
+
+<span class="n">image_name</span> <span class="o">=</span> <span class="s1">&#39;einstein.png&#39;</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">getImage</span><span class="p">(</span><span class="n">image_name</span><span class="p">)</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">get_frontal_face_detector</span><span class="p">()</span>
+<span class="c1">#model = requests.get(&#39;http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2&#39;)</span>
+
+<span class="n">predictor</span> <span class="o">=</span> <span class="n">dlib</span><span class="o">.</span><span class="n">shape_predictor</span><span class="p">(</span><span class="s1">&#39;shape_predictor_68_face_landmarks.dat&#39;</span><span class="p">)</span>
+
+<span class="c1">#ret, image = cap.read()</span>
+<span class="c1"># Convert the image color to grayscale</span>
+<span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span>
+<span class="c1"># Detect the face</span>
+<span class="n">rects</span> <span class="o">=</span> <span class="n">detector</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Detect landmarks for each face</span>
+<span class="k">for</span> <span class="n">rect</span> <span class="ow">in</span> <span class="n">rects</span><span class="p">:</span>
+    <span class="c1"># Get the landmark points</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">predictor</span><span class="p">(</span><span class="n">gray</span><span class="p">,</span> <span class="n">rect</span><span class="p">)</span>
+<span class="c1"># Convert it to the NumPy Array</span>
+    <span class="n">shape_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">68</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">68</span><span class="p">):</span>
+        <span class="n">shape_np</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">part</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">shape_np</span>
+
+    <span class="c1"># Display the landmarks</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+    <span class="c1"># Draw the circle to mark the keypoint </span>
+        <span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+		
+<span class="c1"># Display the image</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Landmark Detection on &#39;</span><span class="o">+</span><span class="n">image_name</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/image_processing_9_0.png" src="_images/image_processing_9_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="to-run-in-real-time">
+<h2>To Run in Real Time<a class="headerlink" href="#to-run-in-real-time" title="Permalink to this headline">¶</a></h2>
+<p>To run face, eye, and landmark detection in real time with your camera, you have to install the software on your computer.  Appendix 2 contains the code for those applications.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This chapter covered a number of image processing algorithms.  They are of the <em>classical programming</em> type, except for the gradient boosted trees.  Recall the key ideas:</p>
+<ul class="simple">
+<li><p>convolution kernels: local processing of images</p></li>
+<li><p>image gradient algorithms for object detection</p></li>
+<li><p>Haar wavelets for detecting shapes</p></li>
+<li><p>boosted regression trees for finding the location of landmarks</p></li>
+</ul>
+</div>
+</div>
+
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"state": {"e145d55b3ad14356a904b4ce601a09d9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "max-content"}}, "f8f9bb93bcb7486fbae038e335eb34a6": {"model_name": "DescriptionStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "ca3d1df11913453da80454d2c9f5a6cf": {"model_name": "RadioButtonsModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "RadioButtonsModel", "_options_labels": ["Original", "Gray", "Blur", "Canny", "Dilation", "Eroded", "Cropped"], "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "RadioButtonsView", "description": "IMGd", "description_tooltip": null, "disabled": false, "index": 0, "layout": "IPY_MODEL_e145d55b3ad14356a904b4ce601a09d9", "style": "IPY_MODEL_f8f9bb93bcb7486fbae038e335eb34a6"}}, "9610807f8f3d494f80d72fe1471fbbdd": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "de1967d5fdce4b968f66c7402862acab": {"model_name": "VBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "1.5.0", "state": {"_dom_classes": ["widget-interact"], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "VBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "VBoxView", "box_style": "", "children": ["IPY_MODEL_ca3d1df11913453da80454d2c9f5a6cf", "IPY_MODEL_377d97fa80c645e384aa53807064d34b"], "layout": "IPY_MODEL_9610807f8f3d494f80d72fe1471fbbdd"}}, "dea2d41bdc0e4b3b8b588a3a22d25f7f": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "377d97fa80c645e384aa53807064d34b": {"model_name": "OutputModel", "model_module": "@jupyter-widgets/output", "model_module_version": "1.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/output", "_model_module_version": "1.0.0", "_model_name": "OutputModel", "_view_count": null, "_view_module": "@jupyter-widgets/output", "_view_module_version": "1.0.0", "_view_name": "OutputView", "layout": "IPY_MODEL_dea2d41bdc0e4b3b8b588a3a22d25f7f", "msg_id": "", "outputs": []}}}, "version_major": 2, "version_minor": 0}
+</script>
+
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/Notes_on_AI.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="AI_Approach.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">AI Approach</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="estimation.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Estimation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

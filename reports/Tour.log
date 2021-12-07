@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/asyncio/base_events.py", line 583, in run_until_complete
+    return future.result()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+x = np.arange(500)
+y = np.random.randn(500)
+
+def update_plot_size(s, cmap):
+    if cmap == "jet":
+        display(HTML("<h2 style='color: red; margin: 0px auto;'>Nope</h2>"))
+        return
+    fig, ax = plt.subplots()
+    ax.scatter(x, y, c=y, s=x*s, cmap=cmap)
+
+interact(update_plot_size, s=FloatSlider(value=1, min=.1, max=2, step=.1), cmap=['viridis', 'magma', 'jet']);
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-1-94e1b30da9f4>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mx[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0marange[0m[0;34m([0m[0;36m500[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m [0my[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mrandom[0m[0;34m.[0m[0mrandn[0m[0;34m([0m[0;36m500[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;34m[0m[0m
+[1;32m      4[0m [0;32mdef[0m [0mupdate_plot_size[0m[0;34m([0m[0ms[0m[0;34m,[0m [0mcmap[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m     [0;32mif[0m [0mcmap[0m [0;34m==[0m [0;34m"jet"[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'np' is not defined
+NameError: name 'np' is not defined
+

@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/asyncio/base_events.py", line 583, in run_until_complete
+    return future.result()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def fnn(x,a,b): # define the neural network function
+    v = 0
+    for k in range(len(a)):
+        v+= b[k]*max(x - a[k],0)
+    return v
+
+def fitNN(X,Y,K,boost,delta):  # K neurons, boot*M resampling, delta = step size   
+    M = len(X) # the number of data points
+    N = boost*M # the number of iterations with bootstrap
+    b = np.zeros([N,K])
+    a = np.zeros(K)
+    a[0] = min(X) - (max(X) - min(X)) # this allows to choose the value at min(HA)
+    for k in range(1,K):  # spread corner points evently  
+        a[k] =  min(X) + (k/K)*(max(X) - min(X))
+    b[0,:] = np.random.uniform(-1,1,K)# why not?
+    for n in range(N-1):
+        for k in range(K):
+            m = random.choice(range(M)) # bootstrap
+            x, y = X[m], Y[m]
+            b[n+1,k] = b[n,k] - delta*(fnn(x,a,b[n,:])- y)*max(0,x - a[k])
+    # Note that we do not update the a[k] in this algorithm.  We could have        
+    return a, b[N-1,:]
+ 
+def plotFitNN(X,Y,a,b):
+    xaxis = [min(X) + 0.01*n*(max(X) - min(X)) for n in range(101)]
+    y = [fnn(x,a,b) for x in xaxis]
+    plt.plot(xaxis,y,color='r',label='NN')
+    
+
+    
+def rmseNN(X,Y,a,b):
+    x = 0
+    for n in range(len(X)):
+        x += (Y[n] - fnn(X[n],a,b))**2
+    x = (x/len(X))**(0.5)
+    y = x/abs(np.average(Y))
+    return round(100*y,1)
+    
+    
+a, b = fitNN(X,Y,6,100,0.001)
+plotFitNN(X,Y,a,b)
+
+
+A, B = fitLR(X,Y)
+plotFitLR(X,Y,A, B)
+plt.title('NN vs LR computed on the complete data set')
+plt.show()
+
+# We print the rmse for the NN and the LR
+print('Rectified mse/average (%): NN = ', rmseNN(X,Y,a,b),'; LR = ', rmse(X,Y,A,B))
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-7-57153ee46e6b>[0m in [0;36m<module>[0;34m[0m
+[1;32m     48[0m [0;34m[0m[0m
+[1;32m     49[0m [0;31m# We print the rmse for the NN and the LR[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 50[0;31m [0mprint[0m[0;34m([0m[0;34m'Rectified mse/average (%): NN = '[0m[0;34m,[0m [0mrmseNN[0m[0;34m([0m[0mX[0m[0;34m,[0m[0mY[0m[0;34m,[0m[0ma[0m[0;34m,[0m[0mb[0m[0;34m)[0m[0;34m,[0m[0;34m'; LR = '[0m[0;34m,[0m [0mrmse[0m[0;34m([0m[0mX[0m[0;34m,[0m[0mY[0m[0;34m,[0m[0mA[0m[0;34m,[0m[0mB[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mNameError[0m: name 'rmse' is not defined
+NameError: name 'rmse' is not defined
+

@@ -1,0 +1,95 @@
+Traceback (most recent call last):
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/asyncio/base_events.py", line 583, in run_until_complete
+    return future.result()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Notebook: computer_vision5.ipynb
+# Detect yawning
+
+from scipy.spatial import distance
+import cv2
+import imutils
+import dlib
+from imutils import face_utils
+
+
+def eye_aspect_ratio(eye):
+	A = distance.euclidean(eye[1], eye[5])
+	B = distance.euclidean(eye[2], eye[4])
+	C = distance.euclidean(eye[0], eye[3])
+	ear = (A + B) / (2.0 * C)
+	return ear
+
+thresh = 0.25
+frame_check = 20
+detect = dlib.get_frontal_face_detector()
+predict = dlib.shape_predictor("Resources/shape_predictor_68_face_landmarks.dat")
+
+(lStart, lEnd) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
+(rStart, rEnd) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]
+
+cap=cv2.VideoCapture(0)
+flag=0
+while True:
+	ret, frame=cap.read()
+	frame = imutils.resize(frame, width=780)
+	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+	subjects = detect(gray, 0)
+	for subject in subjects:
+		shape = predict(gray, subject)
+		shape = face_utils.shape_to_np(shape)#converting to NumPy Array
+		leftEye = shape[lStart:lEnd]
+		rightEye = shape[rStart:rEnd]
+		leftEAR = eye_aspect_ratio(leftEye)
+		rightEAR = eye_aspect_ratio(rightEye)
+		ear = (leftEAR + rightEAR) / 2.0
+		leftEyeHull = cv2.convexHull(leftEye)
+		rightEyeHull = cv2.convexHull(rightEye)
+		cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
+		cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1)
+		if ear < thresh:
+			flag += 1
+			#print (flag)
+			if flag >= frame_check:
+				cv2.putText(frame, "****************ALERT!****************", (10, 30),
+					cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+				cv2.putText(frame, "****************ALERT!****************", (10,325),
+					cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+		else:
+			flag = 0
+	cv2.imshow("Frame", frame)
+	key = cv2.waitKey(1) & 0xFF
+	if key == ord("q"):
+		cv2.destroyAllWindows()
+		cap.release()
+		break
+
+
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mRuntimeError[0m                              Traceback (most recent call last)
+[0;32m<ipython-input-1-f5bd0807302b>[0m in [0;36m<module>[0;34m[0m
+[1;32m     19[0m [0mframe_check[0m [0;34m=[0m [0;36m20[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     20[0m [0mdetect[0m [0;34m=[0m [0mdlib[0m[0;34m.[0m[0mget_frontal_face_detector[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 21[0;31m [0mpredict[0m [0;34m=[0m [0mdlib[0m[0;34m.[0m[0mshape_predictor[0m[0;34m([0m[0;34m"Resources/shape_predictor_68_face_landmarks.dat"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     22[0m [0;34m[0m[0m
+[1;32m     23[0m [0;34m([0m[0mlStart[0m[0;34m,[0m [0mlEnd[0m[0;34m)[0m [0;34m=[0m [0mface_utils[0m[0;34m.[0m[0mFACIAL_LANDMARKS_IDXS[0m[0;34m[[0m[0;34m"left_eye"[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mRuntimeError[0m: Unable to open Resources/shape_predictor_68_face_landmarks.dat
+RuntimeError: Unable to open Resources/shape_predictor_68_face_landmarks.dat
+

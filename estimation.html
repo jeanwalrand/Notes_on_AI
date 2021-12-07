@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estimation &#8212; Notes on AI</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Classification" href="classification.html" />
+    <link rel="prev" title="Image Processing" href="image_processing.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/book2_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Notes on AI</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="AI_Approach.html">
+   AI Approach
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="image_processing.html">
+   Image Processing
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classification.html">
+   Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="deep_learning.html">
+   Deep Learning &amp; Vision
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control.html">
+   Control and Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_1.html">
+   Appendix 1: Prerequisites
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Appendix_2.html">
+   Appendix 2: Local Code
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/estimation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/jeanwalrand/Notes_on_AI.git/main?urlpath=tree/docs/estimation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#polynomial-regression">
+   Polynomial Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ridge-regularization">
+   Ridge Regularization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-means">
+   K-Means
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#regression-tree">
+   Regression Tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boosted-regression-tree">
+   Boosted Regression Tree
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="estimation">
+<h1>Estimation<a class="headerlink" href="#estimation" title="Permalink to this headline">¶</a></h1>
+<p>The problem of estimating <span class="math notranslate nohighlight">\(Y\)</span> based on the observed value <span class="math notranslate nohighlight">\(X\)</span> is central in statistics.  We discussed an example in the chapter <strong>AI Approach</strong> where we explored <strong>linear regression</strong> and the <strong>SGD algorithm</strong> applied to that problem.  We also introduced <strong>regression trees</strong> and <strong>boosted regression trees</strong> in the chapter <strong>Image Processing</strong>.</p>
+<p>In this chapter we explain the following topics:</p>
+<ul class="simple">
+<li><p>Linear Regression</p></li>
+<li><p>Polynomial Regression</p></li>
+<li><p>K-Means</p></li>
+<li><p>Regression Trees</p></li>
+<li><p>Boosted Regression Trees.</p></li>
+</ul>
+<div class="section" id="linear-regression">
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
+<p>The data is <span class="math notranslate nohighlight">\(\{(X_n, Y_n), n = 1, \ldots, M\}\)</span> where the <span class="math notranslate nohighlight">\(Y_n\)</span> are real-values and the <span class="math notranslate nohighlight">\(X_n = (X_n(1), \ldots, X_n(d))^T\)</span> take values in <span class="math notranslate nohighlight">\(\Re^d\)</span>. (Here, <span class="math notranslate nohighlight">\(v^T\)</span> indicates the transposed of <span class="math notranslate nohighlight">\(v\)</span> so that the <span class="math notranslate nohighlight">\(X_n\)</span> are comlumn vectors.)</p>
+<p>We consider an estimator
+of the form <span class="math notranslate nohighlight">\(Y = a + bX\)</span> where <span class="math notranslate nohighlight">\(a\)</span> is real and <span class="math notranslate nohighlight">\(b = (b(1), \ldots, b(d))\)</span> is a row vector with dimension <span class="math notranslate nohighlight">\(d\)</span>.<br />
+The goal is to find <span class="math notranslate nohighlight">\((a, b)\)</span> that minimize the sum of the squared errors</p>
+<div class="math notranslate nohighlight">
+\[SSE = \sum_{n=1}^M (a + bX_n - Y_n)^2.\]</div>
+<p>Setting to zero the partial derivatives of <span class="math notranslate nohighlight">\(SSE\)</span> with respect to <span class="math notranslate nohighlight">\(a\)</span> and the components <span class="math notranslate nohighlight">\(b_i\)</span> of <span class="math notranslate nohighlight">\(b\)</span> gives the following equations:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{n=1}^M (a + bX_n - Y_n) = 0 \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\sum_{n=1}^M (a + bX_n - Y_n)X_n(i) = 0, i = 1, \ldots, d.\]</div>
+<p>Solving this system of <span class="math notranslate nohighlight">\(1 + d\)</span> linear equations in the <span class="math notranslate nohighlight">\(1 + d\)</span> unknowns <span class="math notranslate nohighlight">\((a, b_1, \ldots, b_d)\)</span>
+gives the linear regression of the <span class="math notranslate nohighlight">\(Y_n\)</span> over the <span class="math notranslate nohighlight">\(X_n\)</span>.</p>
+<p>The result of the algebra has a structure that is
+informative.  It can be written as follows:</p>
+<div class="math notranslate nohighlight">
+\[Y = a + bX = E_M(Y) + cov_M(Y, X) cov_M(X, X)^{-1} (X - E_M(X))\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ E_M(Y) = \frac{1}{M} \sum_{n=1}^M Y_n \]</div>
+<div class="math notranslate nohighlight">
+\[ E_M(X) = \frac{1}{M} \sum_{n=1}^M X_n \]</div>
+<div class="math notranslate nohighlight">
+\[ cov_M(Y, X) = \frac{1}{M} \sum_{n=1} (Y_n - E_M(Y))(X_n - E_M(X))^T \]</div>
+<div class="math notranslate nohighlight">
+\[ cov_M(X, X) = \frac{1}{M} \sum_{n=1} (X_n - E_M(X))(X_n - E_M(X))^T.\]</div>
+<p>The quantities <span class="math notranslate nohighlight">\(E_M(Y)\)</span> and <span class="math notranslate nohighlight">\(E_M(X)\)</span> are the sample means of the <span class="math notranslate nohighlight">\(Y_n\)</span> and <span class="math notranslate nohighlight">\(X_n\)</span>, respectively.
+Also, <span class="math notranslate nohighlight">\(cov_M(Y, X)\)</span> is the sample covariance of the <span class="math notranslate nohighlight">\(Y_n\)</span> and <span class="math notranslate nohighlight">\(X_n\)</span> and <span class="math notranslate nohighlight">\(cov_M(X, X)\)</span> is the sample covariance
+matrix of the <span class="math notranslate nohighlight">\(X_n\)</span>.  By the law of large numbers, when <span class="math notranslate nohighlight">\(M\)</span> goes to infinity, the linear regression approaches</p>
+<div class="math notranslate nohighlight">
+\[ E(Y) + cov(Y, X) cov(X, X)^{-1} (X - E(X))\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[ cov(Y, X) = E[ (Y - E(Y))(X - E(X))^T ] \]</div>
+<div class="math notranslate nohighlight">
+\[ cov(X, X) = E[ (X - E(X))(X - E(X))^T ]\]</div>
+<p>are the covariance of <span class="math notranslate nohighlight">\(Y\)</span> and <span class="math notranslate nohighlight">\(X\)</span> and the covariance matrix of <span class="math notranslate nohighlight">\(X\)</span>, respectively.</p>
+<p>One can also use SGD to compute the coefficients recursively as we did in the chapter <strong>AI Approach</strong>. We leave the details to the reader.</p>
+</div>
+<div class="section" id="polynomial-regression">
+<h2>Polynomial Regression<a class="headerlink" href="#polynomial-regression" title="Permalink to this headline">¶</a></h2>
+<p>The data is <span class="math notranslate nohighlight">\(\{(X_n, Y_n), n = 1, \ldots, M\}\)</span>.  We consider an estimator
+of the form <span class="math notranslate nohighlight">\(Y = a_0 + a_1X + a_2 X^2 + \cdots + a_d X^d\)</span>.  The goal is to find the coefficients <span class="math notranslate nohighlight">\((a_0, \ldots, a_d)\)</span> of the polynomial that minimize the sum of the squared error</p>
+<div class="math notranslate nohighlight">
+\[SSE = \sum_{n=1}^M (a_0 + a_1X_n + a_2 X^2_n + \cdots + a_d X^d_n - Y_n)^2.\]</div>
+<p>Note that this is equivalent to finding the affine function of <span class="math notranslate nohighlight">\((X, X^2, \ldots, X^d)\)</span> that minimizes
+the sum of the squared errors.  Thus, the plolynomial regression of order <span class="math notranslate nohighlight">\(d\)</span> of <span class="math notranslate nohighlight">\(Y\)</span> over <span class="math notranslate nohighlight">\(X\)</span> is the linear
+regression of <span class="math notranslate nohighlight">\(Y\)</span> over <span class="math notranslate nohighlight">\((X, X^2, \ldots, X^d)\)</span>.</p>
+<p>We do the computations in the cell below where we generate the data with <span class="math notranslate nohighlight">\(X_n\)</span> uniformly distributed in <span class="math notranslate nohighlight">\([0, 1]\)</span>
+and <span class="math notranslate nohighlight">\(Y_n = g(X_n) + \xi_n\)</span> where <span class="math notranslate nohighlight">\(\xi_n\)</span> is independent of <span class="math notranslate nohighlight">\(X_n\)</span> and Gaussian with mean zero and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.  We choose the same piecewise constant function <span class="math notranslate nohighlight">\(g\)</span> as in chapter <strong>AI Approach</strong>.</p>
+<p>To evaluate the quality of the estimator, we compute the rectified mean squared error <span class="math notranslate nohighlight">\(rmse\)</span> that we define as</p>
+<div class="math notranslate nohighlight">
+\[rmse = \left[ \int_0^1 (g(x) - f(x))^2 dx \right]^{0.5}.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, import some general libraries</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span> <span class="c1"># These are plot parameters</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span>
+         <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">openpyxl</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The libraries loaded successfully&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The libraries loaded successfully
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">polyfit</span>
+
+<span class="n">Lg</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+<span class="n">Ag</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">Lh</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">Ah</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">func_g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># We define the function</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">Lg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Ag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">Ag</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+
+
+<span class="n">J</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">xaxis</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="o">*</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)]</span>
+<span class="n">yaxis</span> <span class="o">=</span> <span class="p">[</span><span class="n">func_g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xaxis</span><span class="p">]</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="k">def</span> <span class="nf">PLfit</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">func_g</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">sigma</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;X,Y&#39;</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">D</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">polyfit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">y_pred</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">xaxis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="n">d</span><span class="o">-</span><span class="n">k</span><span class="p">)</span> 
+            <span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.01</span><span class="o">*</span><span class="p">(</span><span class="n">func_g</span><span class="p">(</span><span class="n">xaxis</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="o">-</span> <span class="n">y_pred</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span><span class="n">y_pred</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+        <span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">rmse</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">PLfit</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">Lh</span><span class="p">,</span> <span class="n">Ah</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;pre&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;g(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Polynomial Regressions&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rmse = &#39;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/estimation_2_0.png" src="_images/estimation_2_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rmse =  [1.716 0.958 1.073]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ridge-regularization">
+<h2>Ridge Regularization<a class="headerlink" href="#ridge-regularization" title="Permalink to this headline">¶</a></h2>
+<p>The example above shows that a polynomial regression of degree <span class="math notranslate nohighlight">\(3\)</span> undefits the data. Also, a regression of degree <span class="math notranslate nohighlight">\(16\)</span> overfits the data by trying to fit the noise that does not correspond to the funciton <span class="math notranslate nohighlight">\(g\)</span>.  To control the amount of overfitting, one can penalize large coefficients of the polynomial.  Instead of minimizing <span class="math notranslate nohighlight">\(SSE\)</span>, the sum of the squares of the errors, one can minimize</p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{M} SSE + \lambda \sum_{k=0}^d a_k^2.\]</div>
+<p>The factor <span class="math notranslate nohighlight">\(\lambda\)</span> controls the amount of penalty.  The last term is called the <strong>Ridge regularization</strong>.</p>
+<p>Thus, the goal is to minimize</p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{M} \sum_{n=1}^M (a_0 + a_1X_n + a_2 X^2_n + \cdots + a_d X^d_n - Y_n)^2 + \lambda \sum_{k=0}^d a_k^2.
+\]</div>
+<p>Setting to zero the partial derivative of this expression with respect to <span class="math notranslate nohighlight">\(a_k\)</span>, one gets</p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{M} \sum_{n=1}^M (a_0 + a_1X_n + a_2 X^2_n + \cdots + a_d X^d_n - Y_n)X^k_n + \lambda a_k = 0.\]</div>
+<p>That is,</p>
+<div class="math notranslate nohighlight">
+\[ \sum_{j = 0}^d [A(k, j) + \lambda 1\{j = k\}] a_j = b_k\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[  A(k, j) = \frac{1}{M} \sum_{n=1}^M X^{j + k}_n \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ b_k = \frac{1}{M} \sum_{n=1}^M X^k_n Y_n. \]</div>
+<p>Writing these equations for <span class="math notranslate nohighlight">\(k = 0, \ldots, d\)</span>, one finds</p>
+<div class="math notranslate nohighlight">
+\[ [A + \lambda \mathbf{I} ] a = b, \]</div>
+<p>so that</p>
+<div class="math notranslate nohighlight">
+\[ a = [A + \lambda \mathbf{I} ]^{-1} b.\]</div>
+<p>We perform the calculations in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+        <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">**</span><span class="n">k</span><span class="o">*</span><span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">/</span><span class="n">M</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+            <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">**</span><span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="n">j</span><span class="p">]</span><span class="o">/</span><span class="n">M</span>
+<span class="n">Lam</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">),</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">)]</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Lam</span><span class="p">))</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">lam</span> <span class="ow">in</span> <span class="n">Lam</span><span class="p">:</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">lam</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>            
+    <span class="n">a</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">xaxis</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">**</span><span class="n">k</span>
+        <span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.01</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">func_g</span><span class="p">(</span><span class="n">xaxis</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xaxis</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;L = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lam</span><span class="p">))</span>
+    <span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;X,Y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">Lh</span><span class="p">,</span> <span class="n">Ah</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;pre&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;g(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Regularized Polynomial Regression of degree &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rmse = &#39;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">)</span>
+    
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/estimation_4_0.png" src="_images/estimation_4_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rmse =  [1.51  1.005 1.252]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="k-means">
+<h2>K-Means<a class="headerlink" href="#k-means" title="Permalink to this headline">¶</a></h2>
+<p>Instead of trying to fit a parametric functions to the data, the <strong>K-means</strong> algorithm approximates <span class="math notranslate nohighlight">\(Y\)</span> by the average value of <span class="math notranslate nohighlight">\(Y_n\)</span> for the <span class="math notranslate nohighlight">\(K\)</span> values of <span class="math notranslate nohighlight">\(X_n\)</span> closest to <span class="math notranslate nohighlight">\(X\)</span>.  The value of <span class="math notranslate nohighlight">\(K\)</span> is a tradeoff between under- and overfitting.</p>
+<p>In one dimension, the algorithm for K-means is simple.  Let <span class="math notranslate nohighlight">\(Z\)</span> be the data ordered in increasing values of <span class="math notranslate nohighlight">\(X_n\)</span>. We start with <span class="math notranslate nohighlight">\(A = Z[:K]\)</span> that contains the first <span class="math notranslate nohighlight">\(K\)</span> items of <span class="math notranslate nohighlight">\(Z\)</span>.  These are the <span class="math notranslate nohighlight">\(K\)</span> neigbors of <span class="math notranslate nohighlight">\(x = 0\)</span>.
+The value of <span class="math notranslate nohighlight">\(f(0)\)</span> is the average of the values of <span class="math notranslate nohighlight">\(Y_n\)</span> for <span class="math notranslate nohighlight">\([X_n, Y_n]\)</span> in <span class="math notranslate nohighlight">\(A\)</span>.  The value of <span class="math notranslate nohighlight">\(f(x)\)</span> remains the same until <span class="math notranslate nohighlight">\(x\)</span> reaches the average of <span class="math notranslate nohighlight">\(X_0\)</span> and <span class="math notranslate nohighlight">\(X_{K+1}\)</span>.  Then one removes <span class="math notranslate nohighlight">\(A[0]\)</span> from <span class="math notranslate nohighlight">\(A\)</span> and one appends
+<span class="math notranslate nohighlight">\([X_{K+1}, Y_{K+1}]\)</span>. One then repeats.</p>
+<p>We try that approach next.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, we sort the data by value of Xn</span>
+<span class="k">def</span> <span class="nf">byX</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="p">[[</span><span class="n">X</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">Y</span><span class="p">[</span><span class="n">n</span><span class="p">]]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">)]</span>
+<span class="n">Z</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">byX</span><span class="p">)</span>
+
+    
+<span class="c1"># Second, we look for the break points B where K-means function changes values and the values C of the function</span>
+<span class="n">Kset</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Kset</span><span class="p">))</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">K</span> <span class="ow">in</span> <span class="n">Kset</span><span class="p">:</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+    <span class="n">C</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[:</span><span class="n">K</span><span class="p">]</span> <span class="c1"># current set of closest neighbors</span>
+    <span class="n">Inext</span> <span class="o">=</span> <span class="n">K</span> <span class="c1"># index of next point</span>
+    <span class="k">while</span> <span class="n">Inext</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">:</span>
+        <span class="n">J</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">A</span><span class="p">]</span>
+        <span class="n">C</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+        <span class="n">B</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">Z</span><span class="p">[</span><span class="n">Inext</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">Inext</span><span class="p">])</span>
+        <span class="n">Inext</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">A</span><span class="p">]</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>        
+    <span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">,</span><span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;K = &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">K</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">B</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">xaxis</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+                <span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.01</span><span class="o">*</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">func_g</span><span class="p">(</span><span class="n">xaxis</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span><span class="o">**</span><span class="mi">2</span>
+                <span class="k">break</span>
+    <span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">rmse</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">**</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;X,Y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">Lh</span><span class="p">,</span> <span class="n">Ah</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;pre&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;g(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;K-Means&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rmse = &#39;</span><span class="p">,</span> <span class="n">rmse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/estimation_6_0.png" src="_images/estimation_6_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rmse =  [0.948 1.151 1.171]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="regression-tree">
+<h2>Regression Tree<a class="headerlink" href="#regression-tree" title="Permalink to this headline">¶</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(Z\)</span> be the data sorted in increasing values of <span class="math notranslate nohighlight">\(X_n\)</span>.
+For any subset <span class="math notranslate nohighlight">\(S\)</span> of <span class="math notranslate nohighlight">\(Z\)</span>, define <span class="math notranslate nohighlight">\(AV(S)\)</span> to be the average value of <span class="math notranslate nohighlight">\(Y_n\)</span> for <span class="math notranslate nohighlight">\([X_n, Y_n]\)</span> in <span class="math notranslate nohighlight">\(S\)</span>.
+Let also <span class="math notranslate nohighlight">\(SSE(S)\)</span> be the sum of <span class="math notranslate nohighlight">\((Y_n - AV(S))^2\)</span> for <span class="math notranslate nohighlight">\([X_n, Y_n]\)</span> in <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>As an iteration step, assume that one has partitioned the range of values of <span class="math notranslate nohighlight">\(X_n\)</span> into <span class="math notranslate nohighlight">\(K\)</span> intervals
+and let  <span class="math notranslate nohighlight">\(Z = Z_0 + Z_1 + \cdots + Z_K\)</span> be the corresponding partition of <span class="math notranslate nohighlight">\(Z\)</span> where <span class="math notranslate nohighlight">\(Z_k\)</span> are the values <span class="math notranslate nohighlight">\((X_n, Y_n)\)</span> in <span class="math notranslate nohighlight">\(Z\)</span> for which <span class="math notranslate nohighlight">\(X_n\)</span> is in the <span class="math notranslate nohighlight">\(k\)</span>th interval.
+Let <span class="math notranslate nohighlight">\(k\)</span> be the value that maximizes <span class="math notranslate nohighlight">\(SSE(Z_k)\)</span>.
+One splits <span class="math notranslate nohighlight">\(Z_k\)</span> into two subsets <span class="math notranslate nohighlight">\(Z_{k,0} + Z_{k, 1}\)</span>
+that correspond to a partition of the interval of values of <span class="math notranslate nohighlight">\(X_n\)</span> for
+<span class="math notranslate nohighlight">\([X_n, Y_n]\)</span> in <span class="math notranslate nohighlight">\(Z_k\)</span>.   The partition is chosen to minimize <span class="math notranslate nohighlight">\(SSE(Z_{k,0}) + SSE(Z_{k,1})\)</span>.</p>
+<p>One then proceeds iteratively until the depth of the tree reaches a specified maximum value.
+The cell below implements that algorithm.  Note the underfitting and overfitting depending on the maximum depth
+of the tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># import the regressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span> 
+  
+<span class="k">for</span> <span class="n">max_depth</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">]:</span>
+    
+    <span class="c1"># create a regressor object</span>
+    <span class="n">regressor</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="n">max_depth</span><span class="p">)</span> 
+
+    <span class="c1"># fit the regressor with X and Y data</span>
+    <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+    <span class="c1"># arange for creating a range of values </span>
+    <span class="c1"># from min value of X to max value of X </span>
+    <span class="c1"># with a difference of 0.01 between two</span>
+    <span class="c1"># consecutive values</span>
+    <span class="n">X_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="c1"># reshape for reshaping the data into </span>
+    <span class="c1"># a len(X_grid)*1 array, i.e. to make</span>
+    <span class="c1"># a column out of the X_grid values</span>
+    <span class="n">X_grid</span> <span class="o">=</span> <span class="n">X_grid</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">X_grid</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># plot predicted data</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_grid</span><span class="p">,</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_grid</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RT&#39;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">max_depth</span><span class="p">))</span> 
+  
+<span class="c1"># scatter plot for original data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;X, Y&#39;</span><span class="p">)</span>
+  
+<span class="c1"># plot function</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">Lh</span><span class="p">,</span> <span class="n">Ah</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;pre&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;g(x)&#39;</span><span class="p">)</span>
+  
+<span class="c1"># specify title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Regression Trees with Different Depths&#39;</span><span class="p">)</span> 
+  
+<span class="c1"># specify X axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+  
+<span class="c1"># specify Y axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+  
+<span class="c1"># show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/estimation_8_0.png" src="_images/estimation_8_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="boosted-regression-tree">
+<h2>Boosted Regression Tree<a class="headerlink" href="#boosted-regression-tree" title="Permalink to this headline">¶</a></h2>
+<p>Next we build a boosted regression tree. The algorithm was explained in the Chapter <strong>Image Processing</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<span class="c1">#X, y = make_regression(random_state=0)</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">GradientBoostingRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+<span class="n">X_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">X_grid</span> <span class="o">=</span> <span class="n">X_grid</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">X_grid</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># plot predicted data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_grid</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_grid</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;BRT&#39;</span><span class="p">)</span> 
+  
+<span class="c1"># scatter plot for original data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;X, Y&#39;</span><span class="p">)</span>
+  
+<span class="c1"># plot function</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">Lh</span><span class="p">,</span> <span class="n">Ah</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;pre&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;g(x)&#39;</span><span class="p">)</span>
+  
+<span class="c1"># specify title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Boosted Regression Tree&#39;</span><span class="p">)</span> 
+  
+<span class="c1"># specify X axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+  
+<span class="c1"># specify Y axis label</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+  
+<span class="c1"># show the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/estimation_10_0.png" src="_images/estimation_10_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "jeanwalrand/Notes_on_AI.git",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="image_processing.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Image Processing</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="classification.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Classification</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jean Walrand<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

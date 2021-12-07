@@ -1,0 +1,77 @@
+Traceback (most recent call last):
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/asyncio/base_events.py", line 583, in run_until_complete
+    return future.result()
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/jeanwalrand/opt/anaconda3/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from numpy import polyfit
+
+Lg = [0.2, 0.4, 0.5, 0.6, 0.8, 0.9]
+Ag = [3,1,0, 5,6,0]
+Lh = [0,0.2, 0.4, 0.5, 0.6, 0.8, 1]
+Ah = [0,3,1,0,5,6,0]
+
+def func_g(x): # We define the function
+    for i in range(6):
+        if Lg[i] > x:
+            return Ag[i]
+    return Ag[5]
+
+
+J = 100
+xaxis = [0.01*j for j in range(101)]
+yaxis = [func_g(x) for x in xaxis]
+
+def PLfit(M,sigma):
+    global X, Y
+    X = np.random.uniform(0,1,M)
+    Y = np.zeros(M)
+    for n in range(M):
+        Y[n] = func_g(X[n]) + np.random.normal(0,sigma)
+    plt.scatter(X,Y,label='X,Y')
+    D = [3,8,16]
+    rmse = np.zeros(len(D))
+    i = 0
+    for d in D:
+        a = polyfit(X, Y, deg=d)
+        y_pred = np.zeros(101)
+        for j in range(101):
+            for k in range(d+1):
+                y_pred[j] += a[k]*xaxis[j]**(d-k) 
+            rmse[i] += 0.01*(func_g(xaxis[j]) - y_pred[j])**2
+        plt.plot(xaxis,y_pred,label=str(d))
+        rmse[i] = rmse[i]**0.5
+        i += 1
+    return round(rmse,3
+
+M =100
+rmse = PLfit(M,0.2)
+plt.step(Lh, Ah, where='pre',label='g(x)')
+plt.xlabel('x')
+plt.title('Polynomial Regressions')
+plt.legend()
+plt.show()
+
+print('rmse = ', rmse)
+------------------
+
+[0;36m  File [0;32m"<ipython-input-2-22749915aeb0>"[0;36m, line [0;32m41[0m
+[0;31m    M =100[0m
+[0m    ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+
+SyntaxError: invalid syntax (<ipython-input-2-22749915aeb0>, line 41)
+
